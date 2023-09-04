@@ -4,7 +4,7 @@ const server = new Server();
 
 server.listen();
 
-//!CONT 06/03 37MIN
+//!CONT 06/03 51MIN
 /*
 !COMENZAR CON TARJETA DE TRELLO
 
