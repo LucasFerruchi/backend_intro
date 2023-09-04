@@ -1,10 +1,6 @@
-//!1.importamos Router y guardamos en una variable
 const { Router } = require("express");
 
 const router = Router();
-
-//!2.creo la estructura de las rutas y configurar server.js
-/*hacer TODOS los tipos de PETICIONES y OJO poner bien las rutas */
 
 //PETICION GET: pedimos info al backend
 router.get("/", function (req, res) {
@@ -16,7 +12,6 @@ router.get("/", function (req, res) {
 //PETICION POST: mandamos info al backend
 router.post("/", function (req, res) {
   //7.COMO RECIBIR DATOS
-  //!7.C-RECIBIR EL CUERPO DE LA PETICION
   const body = req.body;
 
   //PETICION POST: mandamos info al backend
