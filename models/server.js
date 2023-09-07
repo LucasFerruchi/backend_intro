@@ -5,6 +5,11 @@ class Server {
   constructor() {
     this.app = express();
 
+    //!VARIABLE DE ENTORNO
+    //!4.En "server.js". Agregarla en el constructor
+    this.port = process.env.PORT;
+    //!5.Configurar el "listen"
+
     //!5.d-1.PETICION GET POST PUT DELETE
     this.usuariosPath = "/api/usuarios";
 
@@ -27,9 +32,16 @@ class Server {
   routes() {
     this.app.use(this.usuariosPath, require("../routes/usuarios"));
   }
+  // listen() {
+  //   this.app.listen(3000, () => {
+  //     console.log("Server Online");
+  //   });
+  // }
+
+  //!5.Configurar el "listen"
   listen() {
-    this.app.listen(3000, () => {
-      console.log("Server Online");
+    this.app.listen(this.port, () => {
+      console.log("Server Online port:", this.port);
     });
   }
 }
