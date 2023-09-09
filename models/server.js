@@ -1,4 +1,5 @@
 // //!2.en server.js crear su constructor
+
 // const express = require("express");
 
 // class Server {
@@ -15,6 +16,7 @@
 //     });
 //   }
 //   listen() {
+// //!OJO ACA - completar bien
 //     this.app.listen(3000, () => {
 //       console.log("Server Online");
 //     });
@@ -22,13 +24,21 @@
 // }
 
 // module.exports = Server;
-// //!----------------------------------------------------------
+
+// /*
+// COMO QUEDARA NUESTRO INDEX.JS ENTONCES?
+
+// VOLVER A index.js y configurarlo
+// */
+//!----------------------------------------------------------
 
 // //!4.MIDDLEWARES:
-// /*se usan para hacer 'mas validaciones' de usuarios, para
-// CORS, para leer lo que envian los usuarios en la peticion,
-// para definir la 'carpeta publica' (archivos estaticos de
-// nuestro proyecto)*/
+// /*con middlewares "actuamos" en el "medio" del
+// pedido del usuario y nuestra rspuesta.
+// por ejemplo podemos hacer 'mas validaciones' de usuarios,
+// o para CORS, o para leer lo que envian los usuarios
+// en la peticion, tbn para definir la 'carpeta publica'
+// (donde iran archivos estaticos de nuestro proyecto)*/
 
 // const express = require("express");
 
@@ -36,33 +46,36 @@
 //   constructor() {
 //     this.app = express();
 
-//     //Funcion para las rutas
-//     this.routes();
-
-//     //4.a-agregarlo al constructor - middlewares
+//     //!4.a-agregarlo al constructor - middlewares
 //     this.middlewares();
+
+//     //Funcion para rutas
+//     this.routes();
 //   }
 
-//   //!4.CONTINUAR con 'MIDDLEWARES' en 'server.js'
+//   //!4.a-'MIDDLEWARES'
 //   middlewares() {
 //     //CORS
+
 //     //LEER ENVIOS
+
 //     //CARPETA PUBLICA
-//     //4.b-definir carpeta publica y archivo de ej 'index.html'
+//     //!4.b-definir carpeta publica y archivo de ej 'index.html'
 //     this.app.use(express.static("public"));
 //   }
 //   //------------------------------------------------------
 
 //   routes() {
-//     // //4.c-modificar la ruta por  '/api/usuarios'
+//     // //!4.c-modificar la ruta por  '/api/usuarios'
 
 //     // this.app.get("/api/usuarios", function (req, res) {
 //     //   res.send("Hola 52i");
 //     // });
-//     ////-----------------------------------------------------
-//     //otro ejemplo de ruta.. //!mostrar en FIREFOX
+//     // //-----------------------------------------------------
+
+//     //!4.c-otro ejemplo de ruta..
 //     this.app.get("/api/usuarios", function (req, res) {
-//       //cambio el .send por .json.. //!mostrar en FIREFOX
+//       //cambio el .send por .json..
 //       res.json({
 //         mensaje: "soy un usuario",
 //       });
@@ -106,7 +119,7 @@ class Server {
     //LEER LO QUE ENVIA EL USUARIO EN EL CUERPO DE LA PATICION
     //!7.A-
     this.app.use(express.json());
-    /*con esto habilitamos a nuestro servidor para recibir 
+    /*con esto habilitamos a nuestro servidor para recibir
     data y parsearla*/
 
     //CARPETA PUBLICA
@@ -114,11 +127,11 @@ class Server {
   }
 
   routes() {
-    // //modifico la ruta, para q tome 'public'
-    // // this.app.get("/api/usuarios", function (req, res) {
-    // //   res.send("Hola 52i");
-    // // });
-    // //-----------------------------------------------------
+    //modifico la ruta, para q tome 'public'
+    // this.app.get("/api/usuarios", function (req, res) {
+    //   res.send("Hola 52i");
+    // });
+    //-----------------------------------------------------
     // //otro ejemplo de ruta..mostrar en FIREFOX
     // this.app.get("/api/usuarios", function (req, res) {
     //   //cambio el .send por .json
