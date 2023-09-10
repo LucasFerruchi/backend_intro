@@ -59,3 +59,26 @@ datos a github (pero sin sus valores). Para que en el README
 podamos especificar al usuario que debe agregar el archivo .env
 y completar los datos de conexion
 */
+//-----------------------------------------------------------
+//-----------------------------------------------------------
+
+/*
+!SERVIDOR EN LA NUBE (deployar el proyecto)
+
+1-En "package.json", agregar en scrpts
+
+ "start": "node index.js",
+
+ para que el servidor en la nube sepa que con ese comando 
+ se levanta el proyecto
+
+2-Ir a "railway", crear cuenta (con github) y nuevo proyecto
+        a-deployarlo
+        b-ir a settings/create domain
+
+3-Probar el repo en el navegador directamente y luego
+en POSTMAN 
+        a-AGREGARLE /api/usuarios
+        b-ANTEPONER https://
+
+*/
