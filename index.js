@@ -40,7 +40,7 @@ Ej: en "usuarios.js"
 !b-VARIABLES DE ENTORNO
 
 1.Crear el archivo ".env", donde creamos las variables de entorno
-2.Seguir los pasos de ".env"
+2.PORT=8080
 
 3.# b-En "index.jsx" agregar el require("dotenv").config();
 
@@ -50,5 +50,12 @@ Ej: en "usuarios.js"
 6.Agregar a .gitignore el archivo .env
 Esto es para EVITAR que cuando subamos nuestro proyecto
 a GITHUB nuestra ruta a la base de datos SEA PUBLICA
+-----------------------------------------------------------
 
+!env.template
+
+copiamos los mismos comandos que hay en .env, para subir esos
+datos a github (pero sin sus valores). Para que en el README
+podamos especificar al usuario que debe agregar el archivo .env
+y completar los datos de conexion
 */

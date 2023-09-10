@@ -20,6 +20,7 @@ const router = Router();
 //!a-CONTROLADORES-3.
 //PETICION GET: pedimos info al backend
 router.get("/", usuariosGet);
+//---------------------------------------------------------------------------------------------
 
 //!a-5.En "usuariosCtrl.js", crear el resto de las funciones
 // //PETICION POST: mandamos info al backend
@@ -38,6 +39,7 @@ router.get("/", usuariosGet);
 
 //PETICION POST: mandamos info al backend
 router.post("/", usuariosPost);
+//---------------------------------------------------------------------------------------------
 
 // //PETICION PUT: actulaizo info al backend
 // router.put("/:id", function (req, res) {
@@ -48,6 +50,7 @@ router.post("/", usuariosPost);
 
 //PETICION PUT: actulaizo info al backend
 router.put("/:id", usuariosPut);
+//---------------------------------------------------------------------------------------------
 
 // //PETICION DELETE: elimino info al backend
 // router.delete("/:id", function (req, res) {
@@ -58,5 +61,6 @@ router.put("/:id", usuariosPut);
 
 //PETICION DELETE: elimino info al backend
 router.delete("/:id", usuariosDelete);
+//---------------------------------------------------------------------------------------------
 
 module.exports = router;
