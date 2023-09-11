@@ -1,22 +1,6 @@
 const { response, request } = require("express");
 
-//!traigo la peticion get, de usuarios.js
-// function (req, res) {
-//     res.json({
-//       mensaje: "recibo un usuario",
-//     });
-//   }
-
 const usuariosGet = (req = request, res = response) => {
-  //!PRIMERO
-  /*
-  En POSTMAN web. agregarle a la peticion GET, 
-  una "apiKey"
-  un "limit"
-  !estos "parametros" van en la RUTA de la peticion
-  */
-
-  // //!configuro la funcion
   const { apiKey, limit } = req.query;
 
   res.json({
@@ -25,8 +9,6 @@ const usuariosGet = (req = request, res = response) => {
     limit,
   });
 };
-
-//!a-5.En "usuariosCtrl.js", crear el resto de las funciones
 
 const usuariosPost = (req = request, res = response) => {
   //COMO RECIBIR DATOS
