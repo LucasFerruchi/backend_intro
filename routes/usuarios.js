@@ -16,6 +16,5 @@ router.post("/", usuariosPost);
 router.put("/:id", usuariosPut);
 
 router.delete("/:id", usuariosDelete);
-//---------------------------------------------------------------------------------------------
 
 module.exports = router;
