@@ -5,7 +5,7 @@ const server = new Server();
 
 server.listen();
 
-//!CONT 06/03 1:02:00
+//!CONT 06/03
 /*
 !COMENZAR CON TARJETA DE TRELLO
 
@@ -81,4 +81,43 @@ en POSTMAN
         a-AGREGARLE /api/usuarios
         b-ANTEPONER https://
 
+*/
+
+//-----------------------------------------------------------
+//-----------------------------------------------------------
+/*
+!MongoDB
+
+1-Abrin mongoDB atlas, crean cuenta
+
+2-Crear base de datos, configurar usuarios, y dir IP.
+        a-llevar datos (usuario y password) a un bloc de notas
+
+3-Conectar base de datos a travez de "MONGODB compass"
+
+4-Copiar dir de enlace al bloc de notas y llevarlo al bloc de notas
+        a-configurar la dir con usuario y password
+        b-cambiar test por lucas
+
+queda asi:
+
+mongodb+srv://lucasFerruchi:1y6rN5FqxMgtEbgE@cluster0-lucas.44pmyjp.mongodb.net/lucasDB
+
+5-Ir a mongoDB compass (aplicacion), pegar dir configurada
+6-En VISUAL. .env/MONGODB_CNN=
+
+7-mongoose (BUSCAR EN LA CARD DE TRELLO)
+        A-instalar mongoose "npm install mongoose --save"
+
+8-Crear carpeta "database" con el archivo "config.js"
+        a-Hacer estructura mostrando un poco pag MONGOOSE
+
+9-En "server.js" (modelo), llamar funcion "dbConnection" .
+
+10-Levantar el servidor (node index.js) y ver en la teminal 
+que recibimos el mens "Server Online port:8080" y
+"Base de datos OnLine"
+
+11-//!CREAR MODELO DE USUARIO
+        a-En carpeta "models" crear archivo "usuario.js"
 */
