@@ -66,6 +66,7 @@ y completar los datos de conexion
 !SERVIDOR EN LA NUBE (deployar el proyecto)
 
 1-En "package.json", agregar en scrpts
+!unica vez q vamos a tocar el package.json
 
  "start": "node index.js",
 
