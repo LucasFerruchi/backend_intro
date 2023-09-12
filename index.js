@@ -45,7 +45,8 @@ Ej: en "usuarios.js"
 3.# b-En "index.jsx" agregar el require("dotenv").config();
 
 4.En "server.js". Agregarla en el constructor
-5.Configurar el "listen"
+
+!5.Configurar el "listen"
 
 6.Agregar a .gitignore el archivo .env
 Esto es para EVITAR que cuando subamos nuestro proyecto
@@ -58,6 +59,10 @@ copiamos los mismos comandos que hay en .env, para subir esos
 datos a github (pero sin sus valores). Para que en el README
 podamos especificar al usuario que debe agregar el archivo .env
 y completar los datos de conexion
+
+!HASTA ACA: terminamos la configuracion de nuestro SERVIDOR LOCAL
+a partir de ahora, debemos configurar el SERVIDRO EN LA NUBE y la
+BASE DE DATOS
 */
 //-----------------------------------------------------------
 //-----------------------------------------------------------
