@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-//!9-En "server.js" (modelo), llamar funcion "dbConnection"
+//!9.1-En "server.js" (modelo), llamar funcion "dbConnection"
 const { dbConnection } = require("../database/config");
 
 class Server {
@@ -15,14 +15,14 @@ class Server {
     //!5.d-1.PETICION GET POST PUT DELETE
     this.usuariosPath = "/api/usuarios";
 
-    //!9-En "server.js" (modelo), llamar funcion "dbConnection"
+    //!9.3-En "server.js" (modelo), llamar funcion "dbConnection"
     this.conectarDB();
 
     this.middlewares();
 
     this.routes();
   }
-  //!9-En "server.js" (modelo), llamar funcion "dbConnection"
+  //!9.2-En "server.js" (modelo), llamar funcion "dbConnection"
   async conectarDB() {
     await dbConnection();
   }

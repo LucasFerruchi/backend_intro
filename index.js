@@ -118,7 +118,8 @@ mongodb+srv://lucasFerruchi:1y6rN5FqxMgtEbgE@cluster0-lucas.44pmyjp.mongodb.net/
 8-Crear carpeta "database" con el archivo "config.js"
         a-Hacer estructura mostrando un poco pag MONGOOSE
 
-9-En "server.js" (modelo), llamar funcion "dbConnection" .
+9-En "server.js" (modelo), llamar funcion "dbConnection".
+!copiar DE MONGODB COMPASS en ".env"
 
 10-Levantar el servidor (node index.js) y ver en la teminal 
 que recibimos el mens "Server Online port:8080" y
