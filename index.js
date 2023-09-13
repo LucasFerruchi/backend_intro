@@ -6,6 +6,19 @@ const server = new Server();
 server.listen();
 
 //!CONT 08/03 1:05:00
+
+/*
+!IMPORTANTE ANTES DE EMPEZAR
+!SUPER IMPORTANTEEEEEEE
+
+1-En "package.json", agregar en scrpts
+!unica vez q vamos a tocar el package.json
+
+ "start": "node index.js",
+
+ !IMPORTANTE ANTES DE EMPEZAR
+!SUPER IMPORTANTEEEEEEE
+*/
 /*
 !NODEMON
 1-Instalar libreria "nodemon" (de npm),
