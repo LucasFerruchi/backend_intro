@@ -26,21 +26,6 @@ es para no estar deteniendo el proceso y levantarlo.
 */
 //!---------------------------------------------------------
 
-//!POSTMAN
-/*
-1-Llamar a la url del proyecto y en la PETICION POST 
-agregar el siguiente objeto
-
-{
-    "nombre":"Lucas",
-    "correo":"lucas@lucas.com",
-    "password":"12345",
-    "rol":"USER_ROLE"
-    "edad":34
-}
-*/
-//!---------------------------------------------------------
-
 //!Modelo de usuario
 /*
 1-En models/usuario.js. Crear el schema y model
@@ -54,5 +39,41 @@ agregar el siguiente objeto
 
 3-Probar en POSTMAN
 
+        a-Llamar a la url del proyecto y en la PETICION POST 
+        agregar el siguiente objeto
+
+{
+    "nombre":"Lucas",
+    "correo":"lucas@lucas.com",
+    "password":"12345",
+    "rol":"USER_ROLE",
+    "edad":34
+}
+
 4-Verificar en MONGOCOMPASS
+*/
+//!---------------------------------------------------------
+
+//!ENCRIPTACION DE CONTRASEÑA
+/*
+!instalar "bcryptjs"
+
+npm install bcryptjs
+
+a - importarla en "usuariosCtrl.js"
+b - usarla en "peticion POST"
+
+PROBAR EN POSTMAN Y MONGODB COMPASS
+*/
+//!---------------------------------------------------------
+
+//!VALIDACIONES
+/*
+!EXPRESS VALIDATOR
+
+1.intalar
+
+npm install --save express-validator
+
+
 */

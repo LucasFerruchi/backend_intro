@@ -1,4 +1,6 @@
 const { response, request } = require("express");
+//!BCRYPTJS 1.importo bcryptjs
+const bcrypt = require("bcryptjs");
 //!importo Usuario
 const Usuario = require("../models/usuario");
 
@@ -44,13 +46,33 @@ const usuariosPost = async (req = request, res = response) => {
     });
   }
 
-  //Encriptar contraseña
+  //!BCRYPTJS 2 - Encriptar contraseña
+
+  //SIGUIENTE CODIGO COPIAR DE LA DOC DE BCRYPT
+  // var salt = bcrypt.genSaltSync(10);
+  // var hash = bcrypt.hashSync("B4c0/\/", salt);
+
+  const salt = bcrypt.genSaltSync(10);
+  // //  reemplazar el primer parametro por password
+  // const hash = bcrypt.hashSync(password, salt);
+  // usuario.password = hash;
+  //lo podemos hacer en una linea
+  usuario.password = bcrypt.hashSync(password, salt);
+  //!------------------------------------------------------
 
   //Guardar en BD
   await usuario.save();
 
   res.json({
     usuario,
+    // nombre,
+    // rol,
+    /*
+    mostrar como figura el password encriptado,
+    descomentando usuario y comentando nombre y rol.
+    ..eliminar usuarios de la base de datos
+    ..mostrar en postman
+    */
     mensaje: "Usuario creado correctamente",
   });
 };
