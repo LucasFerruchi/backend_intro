@@ -5,7 +5,7 @@ const server = new Server();
 
 server.listen();
 
-//!CONT 08/03 1:05:00
+//!CONT 08/03 1:19:00
 
 /*
 !IMPORTANTE ANTES DE EMPEZAR
@@ -68,7 +68,8 @@ es para no estar deteniendo el proceso y levantarlo.
 //!---------------------------------------------------------
 
 //!ENCRIPTACION DE CONTRASEÑA
-/*
+
+/* 
 !instalar "bcryptjs"
 
 npm install bcryptjs
@@ -81,6 +82,7 @@ PROBAR EN POSTMAN Y MONGODB COMPASS
 //!---------------------------------------------------------
 
 //!VALIDACIONES
+
 /*
 !EXPRESS VALIDATOR
 
@@ -88,5 +90,18 @@ PROBAR EN POSTMAN Y MONGODB COMPASS
 
 npm install --save express-validator
 
+2- DONDE HACEMOS LAS VALIDACIONES????
+ - como tienen q suceder ANTES de las PETICIONES
+ las hacemos en routes/usuarios.js con el metodo CHECK
 
+3-Importarlas y VALIDAR en "peticion post"
+                .entre la ruta y la funcion 
+                .entre corchetes
+-------------------------------------------------------
+
+4-Pero como hacemos para aplicar a todas las PETICIONAS
+las validacion que acabamos de hacer en la POST????????
+
+                A-Crear la carpeta middlewares/validar_campos.js
+                B-Llevar la funcion a "routes/usuarios.js"
 */

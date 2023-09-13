@@ -1,6 +1,8 @@
 const { response, request } = require("express");
+
 //!BCRYPTJS 1.importo bcryptjs
 const bcrypt = require("bcryptjs");
+
 //!importo Usuario
 const Usuario = require("../models/usuario");
 
@@ -33,12 +35,14 @@ const usuariosPost = async (req = request, res = response) => {
   // });
 
   //!nueva configuracion---------------------------------
+
+  //recibir cuerpo de la peticion
   const datos = req.body;
   const { nombre, correo, password, rol } = datos;
 
   const usuario = new Usuario({ nombre, correo, password, rol });
 
-  //Validaciones
+  //Verificar si exite el correo
   const existeEmail = await Usuario.findOne({ correo });
   if (existeEmail) {
     return res.status(400).json({
