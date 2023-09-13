@@ -105,3 +105,11 @@ las validacion que acabamos de hacer en la POST????????
                 A-Crear la carpeta middlewares/validar_campos.js
                 B-Llevar la funcion a "routes/usuarios.js"
 */
+
+//!TAREA
+/*
+Para poder traajar con PETICION GET
+
+crear 10 usuarios, desde postman con PETICION POST.
+verificar que queden guardados en la DB
+*/
