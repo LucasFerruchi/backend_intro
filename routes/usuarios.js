@@ -13,6 +13,9 @@ const {
   usuariosDelete,
 } = require("../controllers/usuariosCtrl");
 
+//importo funcion para validar
+const { esRolValido, esEmailValido } = require("../helpers/db-validators");
+
 const router = Router();
 
 router.get("/", usuariosGet);
@@ -26,8 +29,18 @@ router.post(
       "password",
       "La contraseña debe tener como mínimo 6 caracteres"
     ).isLength({ min: 6 }),
-    check("correo", "no es un correo válido!").isEmail(),
-    check("rol", "El rol no es válido!").isIn(["USER_ROLE", "ADMIN_ROLE"]),
+
+    // //En apps pequeñas
+    // check("correo", "no es un correo válido!").isEmail(),
+    //En apps grandes q pueden crecer
+    check("correo").custom(esEmailValido),
+
+    // //En apps pequeñas
+    // check("rol", "El rol no es válido!").isIn(["USER_ROLE", "ADMIN_ROLE"]),
+    //En apps grandes q pueden crecer
+    check("rol").custom(esRolValido),
+    //!en "models/usuario.js", comentar el "enum:" del "rol"
+
     /*
       Pero si da algun error, el proyecto CAE.
       Como hago para que esto no pase?

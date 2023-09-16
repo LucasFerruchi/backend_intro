@@ -30,7 +30,8 @@ const UsuarioSchema = Schema({
     type: String,
     required: true,
     enum: ["USER_ROLE", "ADMIN_ROLE"], //SE PUEDEN AGREGAR LA CANTIDAD QUE QUEREMOS
-    default: "USER_ROLE",
+    // //para apps pequeñas
+    // default: "USER_ROLE",
   },
   estado: {
     type: Boolean,
