@@ -40,4 +40,13 @@ const UsuarioSchema = Schema({
 
 module.exports = model("Usuario", UsuarioSchema);
 
-//!pasar a crear el usuario en la base de datos
+//!pasar a crear el usuario en la base de datos en "usuariosCtrl.js"
+
+/*
+2-Crear el Usuario en la base de datos
+
+        a-En "usuariosCtrl", importar Usuario desde models
+
+        b-En "usuariosCtrl/usuariosPost", hacer la nueva
+        configuracion, agregar "async"
+*/

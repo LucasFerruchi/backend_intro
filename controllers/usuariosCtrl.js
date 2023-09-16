@@ -42,7 +42,7 @@ const usuariosPost = async (req = request, res = response) => {
 
   const usuario = new Usuario({ nombre, correo, password, rol });
 
-  //Verificar si exite el correo
+  //Verificar si exite el correo - metodo findOne
   const existeEmail = await Usuario.findOne({ correo });
   if (existeEmail) {
     return res.status(400).json({

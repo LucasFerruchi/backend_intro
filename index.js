@@ -18,7 +18,13 @@ server.listen();
 
  !IMPORTANTE ANTES DE EMPEZAR
 !SUPER IMPORTANTEEEEEEE
+
+Agregar en middleware la sig linea
+
+//recibir datos .json
+    this.app.use(express.json());
 */
+
 /*
 !NODEMON
 1-Instalar libreria "nodemon" (de npm),
@@ -63,7 +69,11 @@ es para no estar deteniendo el proceso y levantarlo.
     "edad":34
 }
 
-4-Verificar en MONGOCOMPASS
+!4-Verificar si existe usuario
+
+!5-Guardar en base de datos
+.Verificar en MONGOCOMPASS
+
 */
 //!---------------------------------------------------------
 
@@ -95,20 +105,20 @@ npm install --save express-validator
  las hacemos en routes/usuarios.js con el metodo CHECK
 
 3-Importarlas y VALIDAR en "peticion post"
-                .entre la ruta y la funcion 
-                .entre corchetes
+        .entre la ruta y la funcion 
+        .entre corchetes
 -------------------------------------------------------
 
 4-Pero como hacemos para aplicar a todas las PETICIONAS
 las validacion que acabamos de hacer en la POST????????
 
-                A-Crear la carpeta middlewares/validar_campos.js
-                B-Llevar la funcion a "routes/usuarios.js"
+        A-Crear la carpeta middlewares/validar_campos.js
+        B-Llevar la funcion a "routes/usuarios.js"
 */
 
 //!TAREA
 /*
-Para poder traajar con PETICION GET
+Para poder trabajar con PETICION GET
 
 crear 10 usuarios, desde postman con PETICION POST.
 verificar que queden guardados en la DB
