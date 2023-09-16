@@ -5,7 +5,7 @@ const server = new Server();
 
 server.listen();
 
-//!CONT 13/03
+//!13/03 cont 1:45:00
 /*
 !crear base de datos con los roles de usuario
 
@@ -59,4 +59,12 @@ b-en "controllers/usuariosCtrl.js", configurar la peticion PUT
 
 c-en "routes/usuarios.js", //!VALIDAR LA PETICION PUT
 
+!-----------------------------------------------------------
+!PETICION GET: traer datos
+
+a-en "controllers/usuariosCtrl.js"
+        supongamos que nuestra app es enorme y 
+        tenemos miles de usuarios.
+        1.Cómo hago para traer a TODOS?
+        2.Cómo traigo parte de mis objetos?
 */

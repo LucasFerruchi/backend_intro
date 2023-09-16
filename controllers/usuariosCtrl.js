@@ -4,15 +4,37 @@ const bcrypt = require("bcryptjs");
 //!importo Usuario
 const Usuario = require("../models/usuario");
 
-const usuariosGet = (req = request, res = response) => {
-  const { apiKey, limit } = req.query;
+//!-----------------------------------------------------
+const usuariosGet = async (req = request, res = response) => {
+  // //1.Cómo hago para traer a TODOS? - con metodo find
+  // const usuarios = await Usuario.find();
+
+  // res.json({
+  //   usuarios,
+  // });
+  // /*crear en POSTMAN la respuesta get y guadarla, probar */
+  // //------------------------------------------------
+
+  //2.Cómo traigo parte de mis objetos?
+  //recibe los "params" desde el front (POSTMAN)
+  const { desde = 0, limite = 0 } = req.query;
+
+  //COMO RESPONDEMOS?
+  const usuarios = await Usuario.find().skip(desde).limit(limite);
+  const total = await Usuario.countDocuments(); //motrara el total de objetos del array
+
+  // //para OPTIMIZAR la respuesta y sea MAS RAPIDA AUN
+  // const [total, usuarios] = await Promise.all([
+  //   Usuario.countDocuments(),
+  //   Usuario.find().skip(desde).limit(limite),
+  // ]);
 
   res.json({
-    mensaje: "recibo un usuario del controlador",
-    apiKey,
-    limit,
+    total,
+    usuarios,
   });
 };
+//!-----------------------------------------------------
 
 //!nueva configuracion, agregar "async"
 const usuariosPost = async (req = request, res = response) => {
