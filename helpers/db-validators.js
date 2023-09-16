@@ -19,9 +19,19 @@ const esEmailValido = async (correo) => {
   }
 };
 
+//funcion para verifiar el id
+const esIdValido = async (id) => {
+  const existeUsuario = await Usuario.findById(id);
+
+  if (!existeUsuario) {
+    throw new Error(`El Id ${id} no corresponde a ingún usuario registrado`);
+  }
+};
+
 module.exports = {
   esRolValido,
   esEmailValido,
+  esIdValido,
 };
 
 //!Exportar la funcion a la ruta post "carpeta routes/usuarios.js"

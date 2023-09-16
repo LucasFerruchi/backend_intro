@@ -39,15 +39,14 @@ const UsuarioSchema = Schema({
   },
 });
 
+//!Quitar datos de la respuesta json
+UsuarioSchema.methods.toJSON = function () {
+  //desestructuramos los datos que NO queremos devolver
+  const { __v, password, ...usuario } = this.toObject();
+  //retornamos el reso de datos que quedaron gusradados en "usuario"
+  return usuario;
+};
+
+//PROBAR EN POSTMAN CREANDO UN NUEVO USUARIO
+
 module.exports = model("Usuario", UsuarioSchema);
-
-//!pasar a crear el usuario en la base de datos en "usuariosCtrl.js"
-
-/*
-2-Crear el Usuario en la base de datos
-
-        a-En "usuariosCtrl", importar Usuario desde models
-
-        b-En "usuariosCtrl/usuariosPost", hacer la nueva
-        configuracion, agregar "async"
-*/

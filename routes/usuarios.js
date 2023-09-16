@@ -14,7 +14,11 @@ const {
 } = require("../controllers/usuariosCtrl");
 
 //importo funcion para validar
-const { esRolValido, esEmailValido } = require("../helpers/db-validators");
+const {
+  esRolValido,
+  esEmailValido,
+  esIdValido,
+} = require("../helpers/db-validators");
 
 const router = Router();
 
@@ -41,17 +45,25 @@ router.post(
     check("rol").custom(esRolValido),
     //!en "models/usuario.js", comentar el "enum:" del "rol"
 
-    /*
-      Pero si da algun error, el proyecto CAE.
-      Como hago para que esto no pase?
-      *funcion para validarCampos viene desde CARPETA MIDDLEWARES
-      */
     validarCampos,
   ],
   usuariosPost
 );
 
-router.put("/:id", usuariosPut);
+//!VALIDAR LA PETICION PUT
+router.put(
+  "/:id",
+  [
+    check("id", "No es un ID válido").isMongoId(), //metodo para verificar que sea lenguaje mongo
+    //en "helpers/db-validators.js" funcion para verifiar el id
+    check("id").custom(esIdValido),
+    //Podemos agregar las validacion q queramos, ej la de rol
+    check("rol").custom(esRolValido),
+    //Validamos que no haya errores en los campos
+    validarCampos, //viene de "middlewares/validar_campos.js"
+  ],
+  usuariosPut
+);
 
 router.delete("/:id", usuariosDelete);
 

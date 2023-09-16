@@ -44,11 +44,41 @@ const usuariosPost = async (req = request, res = response) => {
 };
 //!-----------------------------------------------------
 
-const usuariosPut = (req = request, res = response) => {
+//agregar el async
+const usuariosPut = async (req = request, res = response) => {
+  //DESESTRUCTURMOS Y OBTENEMOS ID
+  const { id } = req.params;
+
+  //obtener datos a actualizar, por ej:
+  const { password, correo, ...resto } = req.body;
+
+  //volver a sifrar el password
+  if (password) {
+    const salt = bcrypt.genSaltSync(10);
+    resto.password = bcrypt.hashSync(password, salt);
+  }
+
+  //buscar el usuario y actualizarlo
+  const usuario = await Usuario.findByIdAndUpdate(id, resto, { new: true });
+  //como tercer param, le decimos que muestre los datos actualizados
+
+  //agrego id y probar en POSTMAN
   res.json({
     mensaje: "modifico un usuario",
+    // //comentar id
+    // id,
+    //agregar usuario
+    usuario,
   });
 };
+
+/*Hacer la prueba en POSTMAN
+agregando un BODY a la peticion PUT  
+
+Actualizar mongodb compass
+y prestar atencio que cambia el password y nombre
+*/
+//!-----------------------------------------------------
 
 const usuariosDelete = (req = request, res = response) => {
   res.json({

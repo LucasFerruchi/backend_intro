@@ -42,5 +42,21 @@ a.En MONGODB Compass
         con un CORREO q exista
         volver a probar con un correo que "no" existe
 
+!-----------------------------------------------------------
+!Quitar datos de la respuesta json
+
+-No quiero devolverle al frontend ciertos datos
+        
+        1.en "models/usuario.js"
+
+
+!-----------------------------------------------------------
+!PETICION PUT: modificar datos
+
+a-en POSTMAN crear colecciones para cada peticion
+
+b-en "controllers/usuariosCtrl.js", configurar la peticion PUT
+
+c-en "routes/usuarios.js", //!VALIDAR LA PETICION PUT
 
 */
