@@ -8,6 +8,8 @@ class Server {
 
     //http
     this.port = process.env.PORT;
+    //ruta de autenticacion, agregar a "routes"
+    this.authPath = "/api/auth";
     this.usuariosPath = "/api/usuarios";
 
     //DB
@@ -39,6 +41,9 @@ class Server {
 
   //RUTAS
   routes() {
+    //Ruta de autenticacion
+    this.app.use(this.authPath, require("../routes/auth"));
+
     this.app.use(this.usuariosPath, require("../routes/usuarios"));
   }
 

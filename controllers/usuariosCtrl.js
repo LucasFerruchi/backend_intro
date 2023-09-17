@@ -76,12 +76,6 @@ const usuariosPut = async (req = request, res = response) => {
   });
 };
 
-/*Hacer la prueba en POSTMAN
-agregando un BODY a la peticion PUT  
-
-Actualizar mongodb compass
-y prestar atencio que cambia el password y nombre
-*/
 //!-----------------------------------------------------
 
 const usuariosDelete = async (req = request, res = response) => {

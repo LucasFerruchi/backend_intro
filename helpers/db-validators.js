@@ -19,7 +19,7 @@ const esEmailValido = async (correo) => {
   }
 };
 
-//funcion para verifiar el id
+//funcion para verifiar el id y saber si el USUARIO existe
 const esIdValido = async (id) => {
   //metodo especifico para encontrar id
   const existeUsuario = await Usuario.findById(id);
