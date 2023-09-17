@@ -18,6 +18,9 @@ const {
   esIdValido,
 } = require("../helpers/db-validators");
 
+//importo funcion para validar token
+const { validarJWT } = require("../middlewares/validar_jwt");
+
 const router = Router();
 
 router.get("/", usuariosGet);
@@ -68,6 +71,7 @@ router.put(
 router.delete(
   "/:id",
   [
+    validarJWT,
     check("id", "No es un ID válido").isMongoId(),
     check("id").custom(esIdValido),
     validarCampos,

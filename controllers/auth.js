@@ -1,11 +1,13 @@
 const { response, request } = require("express");
 const bcrypt = require("bcryptjs");
 const Usuario = require("../models/usuario");
+const { generarJWT } = require("../helpers/generar-jwt");
 
 const login = async (req = request, res = response) => {
   //recibimos los datos desde el frontend
   const { correo, password } = req.body;
 
+  ////Para probar la ruta nada mas
   //   res.json({
   //     msg: "login ok",
   //     correo,
@@ -42,12 +44,15 @@ const login = async (req = request, res = response) => {
     /*//!Antes de generar token
     7-configurar "auth.js - routes" con validaciones*/
 
-    //generar token
+    //generar token (va a venir de una funcion -generarJWT)
+    const token = await generarJWT(usuario.id);
 
     res.json({
       msg: "login ok",
       //   correo,
       //   password,
+      //   usuario,
+      token,
     });
   } catch (error) {
     console.log(error);
