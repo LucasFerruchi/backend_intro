@@ -19,7 +19,8 @@ const usuariosGet = async (req = request, res = response) => {
   //recibe los "params" desde el front (POSTMAN)
   const { desde = 0, limite = 0 } = req.query;
 
-  //b-corregir el GET para actualiar la lista
+  /*b-corregir el GET para actualizar la lista 
+  y solo aparezcan los usuarios con estado true*/
   const query = { estado: true };
 
   //COMO RESPONDEMOS? (//!primero hacerlo sin el "query")
