@@ -35,8 +35,7 @@ router.post(
       "La contraseña debe tener como mínimo 6 caracteres"
     ).isLength({ min: 6 }),
 
-    // //En apps pequeñas
-    // check("correo", "no es un correo válido!").isEmail(),
+    check("correo", "no es un correo válido!").isEmail(),
     //En apps grandes q pueden crecer
     check("correo").custom(esEmailValido),
 
