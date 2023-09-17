@@ -6,6 +6,17 @@ const Usuario = require("../models/usuario");
 
 //!-----------------------------------------------------
 const usuariosGet = async (req = request, res = response) => {
+  // //1.Cómo hago para traer a TODOS? - con metodo find
+  // const usuarios = await Usuario.find();
+
+  // res.json({
+  //   usuarios,
+  // });
+  // /*crear en POSTMAN la respuesta get y guadarla, probar */
+  // //------------------------------------------------
+
+  //2.Cómo traigo parte de mis objetos?
+  //recibe los "params" desde el front (POSTMAN)
   const { desde = 0, limite = 0 } = req.query;
 
   /*b-corregir el GET para actualizar la lista 
@@ -36,6 +47,14 @@ const usuariosPost = async (req = request, res = response) => {
   const { nombre, correo, password, rol } = datos;
 
   const usuario = new Usuario({ nombre, correo, password, rol });
+
+  // //Verificar si exite el correo - metodo findOne
+  // const existeEmail = await Usuario.findOne({ correo });
+  // if (existeEmail) {
+  //   return res.status(400).json({
+  //     msg: "El correo ya existe",
+  //   });
+  // }
 
   //!BCRYPTJS 2 - Encriptar contraseña
   const salt = bcrypt.genSaltSync(10);
@@ -72,10 +91,19 @@ const usuariosPut = async (req = request, res = response) => {
   //agrego id y probar en POSTMAN
   res.json({
     mensaje: "modifico un usuario",
+    // //comentar id
+    // id,
+    //agregar usuario
     usuario,
   });
 };
 
+/*Hacer la prueba en POSTMAN
+agregando un BODY a la peticion PUT  
+
+Actualizar mongodb compass
+y prestar atencio que cambia el password y nombre
+*/
 //!-----------------------------------------------------
 
 const usuariosDelete = async (req = request, res = response) => {

@@ -31,5 +31,6 @@ como se compone un token
         4-probar la ruta en POSTMAN y
         5-agregar en el body de la peticon correo y password
 
-        6-configurar "auth.js - controllers"
+        6-configurar "auth.js - controllers" con las verificaciones
+        7-configurar "auth.js - routes" con validaciones
         */

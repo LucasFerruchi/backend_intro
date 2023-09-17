@@ -28,6 +28,7 @@ const login = async (req = request, res = response) => {
         msg: "Correo o password incorrectos | usuario inactivo",
       });
     }
+    //!probar en POSTMAN
 
     //verificar la contraseña - OJO la contraseña esta sifrada
     const validPassword = bcrypt.compareSync(password, usuario.password);
@@ -37,13 +38,16 @@ const login = async (req = request, res = response) => {
         msg: "Correo o password incorrectos | password",
       });
     }
+    //!probar en POSTMAN
+    /*//!Antes de generar token
+    7-configurar "auth.js - routes" con validaciones*/
 
     //generar token
 
     res.json({
       msg: "login ok",
-      correo,
-      password,
+      //   correo,
+      //   password,
     });
   } catch (error) {
     console.log(error);
