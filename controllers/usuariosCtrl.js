@@ -37,14 +37,6 @@ const usuariosPost = async (req = request, res = response) => {
 
   const usuario = new Usuario({ nombre, correo, password, rol });
 
-  // //Verificar si exite el correo - metodo findOne
-  // const existeEmail = await Usuario.findOne({ correo });
-  // if (existeEmail) {
-  //   return res.status(400).json({
-  //     msg: "El correo ya existe",
-  //   });
-  // }
-
   //!BCRYPTJS 2 - Encriptar contraseña
   const salt = bcrypt.genSaltSync(10);
   usuario.password = bcrypt.hashSync(password, salt);
@@ -80,9 +72,6 @@ const usuariosPut = async (req = request, res = response) => {
   //agrego id y probar en POSTMAN
   res.json({
     mensaje: "modifico un usuario",
-    // //comentar id
-    // id,
-    //agregar usuario
     usuario,
   });
 };

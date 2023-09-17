@@ -1,6 +1,4 @@
 const { Router } = require("express");
-
-//!importar validaciones
 const { check } = require("express-validator");
 
 //funcion para validar campos
@@ -35,8 +33,8 @@ router.post(
       "La contraseña debe tener como mínimo 6 caracteres"
     ).isLength({ min: 6 }),
 
-    // //En apps pequeñas
-    // check("correo", "no es un correo válido!").isEmail(),
+    //En apps pequeñas
+    check("correo", "no es un correo válido!").isEmail(),
     //En apps grandes q pueden crecer
     check("correo").custom(esEmailValido),
 
