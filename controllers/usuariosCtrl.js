@@ -19,9 +19,12 @@ const usuariosGet = async (req = request, res = response) => {
   //recibe los "params" desde el front (POSTMAN)
   const { desde = 0, limite = 0 } = req.query;
 
-  //COMO RESPONDEMOS?
-  const usuarios = await Usuario.find().skip(desde).limit(limite);
-  const total = await Usuario.countDocuments(); //motrara el total de objetos del array
+  //b-corregir el GET para actualiar la lista
+  const query = { estado: true };
+
+  //COMO RESPONDEMOS? (//!primero hacerlo sin el "query")
+  const usuarios = await Usuario.find(query).skip(desde).limit(limite);
+  const total = await Usuario.countDocuments(query); //motrara el total de objetos del array
 
   // //para OPTIMIZAR la respuesta y sea MAS RAPIDA AUN
   // const [total, usuarios] = await Promise.all([
@@ -102,11 +105,55 @@ y prestar atencio que cambia el password y nombre
 */
 //!-----------------------------------------------------
 
-const usuariosDelete = (req = request, res = response) => {
+const usuariosDelete = async (req = request, res = response) => {
+  //DESESTRUCTURMOS Y OBTENEMOS ID
+  const { id } = req.params;
+
+  // // BORRAR EL ELEMENTO DEFINITIVAMENTE -------------------
+  // const usuarioBorrado = await Usuario.findByIdAndDelete(id);
+
+  // res.json({
+  //   mensaje: "Usuario borrado!",
+  //   //mostramos la info del usuario inactivado
+  //   usuarioBorrado,
+  // });
+
+  //!-----------------------------------------------------
+
+  // INFORMAR EL CAMBIO DE ESTADO -----------------------
+  //metodo especifico para encontrar id
+  const usuario = await Usuario.findById(id);
+
+  //Informar el cambio de estado
+  if (!usuario.estado) {
+    return res.json({
+      msg: "El usuario esta inactivo!",
+    });
+  }
+
+  //encuentre el id y atualice el estado a false
+  const usuarioInactivo = await Usuario.findByIdAndUpdate(
+    id,
+    { estado: false },
+    { new: true }
+  );
+
+  //Buscar el usuario por su id
   res.json({
-    mensaje: "borre un usuario",
+    mensaje: "Usuario inactivo!",
+    //mostramos la info del usuario inactivado
+    usuarioInactivo,
   });
 };
+
+/*
+a-Probar en POSTMAN y COMPASS, copiando un id. Tanto el 
+borrar como el cambiar de estado
+
+b-corregir el GET para actualiar la lista y solo mustre
+los usuarios activos..agregar la variable "query"
+*/
+//!-----------------------------------------------------
 
 //!exportar
 module.exports = {

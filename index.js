@@ -5,7 +5,7 @@ const server = new Server();
 
 server.listen();
 
-//!13/03 cont 1:45:00
+//!13/03
 /*
 !crear base de datos con los roles de usuario
 
@@ -67,4 +67,18 @@ a-en "controllers/usuariosCtrl.js"
         tenemos miles de usuarios.
         1.Cómo hago para traer a TODOS?
         2.Cómo traigo parte de mis objetos?
+
+!-----------------------------------------------------------
+!PETICION DELETE: ELIMINAR
+
+En realidad no vamos a ELIMINAR, sino que pasamos el "estado"
+delobjeto a "false" y tenemos que hacer que no aparzca en
+la lista
+
+        1.en "controllers/usuariosCtrl.js" PETICION DELETE
+
+!VALIDACIONES DELETE
+
+        1.en "routes/usuarios.js" en la peticion delete
+
 */

@@ -24,9 +24,10 @@ const router = Router();
 
 router.get("/", usuariosGet);
 
+//!Validaciones en POST
 router.post(
   "/",
-  //validaciones
+
   [
     check("nombre", "El nombre es obligatorio").notEmpty(), //con notEmpty, decimos q el campo NO TIENE QUE ESTAR VACIO
     check(
@@ -50,7 +51,7 @@ router.post(
   usuariosPost
 );
 
-//!VALIDAR LA PETICION PUT
+//!Validaciones en PUT
 router.put(
   "/:id",
   [
@@ -65,6 +66,15 @@ router.put(
   usuariosPut
 );
 
-router.delete("/:id", usuariosDelete);
+//!Validaciones en DELETE
+router.delete(
+  "/:id",
+  [
+    check("id", "No es un ID válido").isMongoId(),
+    check("id").custom(esIdValido),
+    validarCampos,
+  ],
+  usuariosDelete
+);
 
 module.exports = router;
