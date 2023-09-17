@@ -5,80 +5,11 @@ const server = new Server();
 
 server.listen();
 
-//!13/03
+//!15/03
 /*
-!crear base de datos con los roles de usuario
-
-a.En MONGODB Compass
-        1.Conctar nuestra base de datis
-        2.crear nueva coleccion "rols"
-        3.crear los objetos
-                
-}
-  "rol": "USER_ROLE"
-}
-
-}
-  "rol": "ADMIN_ROLE"
-}
-
-        4.en "models" creo el archivo rol.js
-
-        !validar el rol
-        5.crear "helpers/db-validators.js", funcion "esRolValido" 
-        6.Exportar la funcion a la ruta post "carpeta routes/usuarios.js"
-        7.en "models/usuario.js", comentar el "enum:" del "rol"
-
-        8.PROBAR EN POSTMAN, creando un nuevo usuario 
-        con un ROL q NO exista
-        volver a probar con un rol que "si" existe
-
-        !validar el email
-        9.crear "helpers/db-validators.js", funcion "esEmailValido" 
-        10.Exportar la funcion a la ruta post "carpeta routes/usuarios.js"
-        11.en "controllers/usuariosCtrl.js" comentar la validacion del email
-
-        12.PROBAR EN POSTMAN, creando un nuevo usuario 
-        con un CORREO q exista
-        volver a probar con un correo que "no" existe
-
-!-----------------------------------------------------------
-!Quitar datos de la respuesta json
-
--No quiero devolverle al frontend ciertos datos
-        
-        1.en "models/usuario.js"
-
-
-!-----------------------------------------------------------
-!PETICION PUT: modificar datos
-
-a-en POSTMAN crear colecciones para cada peticion
-
-b-en "controllers/usuariosCtrl.js", configurar la peticion PUT
-
-c-en "routes/usuarios.js", //!VALIDAR LA PETICION PUT
-
-!-----------------------------------------------------------
-!PETICION GET: traer datos
-
-a-en "controllers/usuariosCtrl.js"
-        supongamos que nuestra app es enorme y 
-        tenemos miles de usuarios.
-        1.Cómo hago para traer a TODOS?
-        2.Cómo traigo parte de mis objetos?
-
-!-----------------------------------------------------------
-!PETICION DELETE: ELIMINAR
-
-En realidad no vamos a ELIMINAR, sino que pasamos el "estado"
-delobjeto a "false" y tenemos que hacer que no aparzca en
-la lista
-
-        1.en "controllers/usuariosCtrl.js" PETICION DELETE
-
-!VALIDACIONES DELETE
-
-        1.en "routes/usuarios.js" en la peticion delete
-
+a-mostrar pagina JSON WEB TOKENS,
+como se compone un token
+        1-header, con el algoritmo y el tipo
+        2-el payload, contiene la informacion
+        3-la key
 */

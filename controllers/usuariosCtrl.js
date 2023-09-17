@@ -6,20 +6,10 @@ const Usuario = require("../models/usuario");
 
 //!-----------------------------------------------------
 const usuariosGet = async (req = request, res = response) => {
-  // //1.Cómo hago para traer a TODOS? - con metodo find
-  // const usuarios = await Usuario.find();
-
-  // res.json({
-  //   usuarios,
-  // });
-  // /*crear en POSTMAN la respuesta get y guadarla, probar */
-  // //------------------------------------------------
-
-  //2.Cómo traigo parte de mis objetos?
-  //recibe los "params" desde el front (POSTMAN)
   const { desde = 0, limite = 0 } = req.query;
 
-  //b-corregir el GET para actualiar la lista
+  /*b-corregir el GET para actualizar la lista 
+  y solo aparezcan los usuarios con estado true*/
   const query = { estado: true };
 
   //COMO RESPONDEMOS? (//!primero hacerlo sin el "query")
