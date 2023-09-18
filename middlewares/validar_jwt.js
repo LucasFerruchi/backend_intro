@@ -35,7 +35,7 @@ const validarJWT = async (req = request, res = response, next) => {
       });
     }
 
-    //guardar los datos del usuario e la req
+    //guardar los datos del usuario en la req
     req.usuario = usuario;
 
     next();

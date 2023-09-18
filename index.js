@@ -80,6 +80,8 @@ comunes no deberian tener acceso a las rutas
 
                         .activar el x-token y cambiarlo y probar
 
-
+!mostrar el usuario que realizo la accion delete
+        1-en "controllers/usuariosCtrl.js/usuariosDelete"
+        2-llamamos a los datos del usuario desde "req"
 
 */

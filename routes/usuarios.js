@@ -20,12 +20,15 @@ const {
 
 //importo funcion para validar token
 const { validarJWT } = require("../middlewares/validar_jwt");
+//importo funcion para validar rol
+const { esAdminRole } = require("../middlewares/validar-roles");
 
 const router = Router();
 
+//!Ruta GET (Pedir datos podria un admin)
 router.get("/", usuariosGet);
 
-//!Validaciones en POST
+//!Ruta POST - REGISTRO DE USUARIO (...)
 router.post(
   "/",
 
@@ -52,10 +55,12 @@ router.post(
   usuariosPost
 );
 
-//!Validaciones en PUT
+//!Ruta PUT (Actualizar podria un usuario comun)
 router.put(
   "/:id",
   [
+    //funcion para validar token
+    validarJWT,
     check("id", "No es un ID válido").isMongoId(), //metodo para verificar que sea lenguaje mongo
     //en "helpers/db-validators.js" funcion para verifiar el id
     check("id").custom(esIdValido),
@@ -67,13 +72,19 @@ router.put(
   usuariosPut
 );
 
-//!Validaciones en DELETE
+//!Ruta DELETE (Borrar podria un admin)
 router.delete(
   "/:id",
   [
+    //funcion para validar token
     validarJWT,
+
+    //funcion para validar rol
+    esAdminRole,
+
     check("id", "No es un ID válido").isMongoId(),
     check("id").custom(esIdValido),
+
     validarCampos,
   ],
   usuariosDelete

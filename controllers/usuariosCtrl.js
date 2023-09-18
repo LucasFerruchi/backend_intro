@@ -110,6 +110,9 @@ const usuariosDelete = async (req = request, res = response) => {
   //DESESTRUCTURMOS Y OBTENEMOS ID
   const { id } = req.params;
 
+  // !mostrar el usuario que realizo la accion delete
+  const usuarioAdmin = req.usuario;
+
   // // BORRAR EL ELEMENTO DEFINITIVAMENTE -------------------
   // const usuarioBorrado = await Usuario.findByIdAndDelete(id);
 
@@ -118,8 +121,7 @@ const usuariosDelete = async (req = request, res = response) => {
   //   //mostramos la info del usuario inactivado
   //   usuarioBorrado,
   // });
-
-  //!-----------------------------------------------------
+  //-----------------------------------------------------
 
   // INFORMAR EL CAMBIO DE ESTADO -----------------------
   //metodo especifico para encontrar id
@@ -144,6 +146,9 @@ const usuariosDelete = async (req = request, res = response) => {
     mensaje: "Usuario inactivo!",
     //mostramos la info del usuario inactivado
     usuarioInactivo,
+
+    // !mostrar el usuario que realizo la accion delete
+    usuarioAdmin,
   });
 };
 
