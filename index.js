@@ -5,7 +5,7 @@ const server = new Server();
 
 server.listen();
 
-//!15/03 CONT 1:46:00
+//!15/03
 /*
 !a-mostrar pagina JSON WEB TOKENS,
 como se compone un token
@@ -83,5 +83,8 @@ comunes no deberian tener acceso a las rutas
 !mostrar el usuario que realizo la accion delete
         1-en "controllers/usuariosCtrl.js/usuariosDelete"
         2-llamamos a los datos del usuario desde "req"
+
+!Entonces debemos ahora validar el ROL de los usuarios
+        1-en "middlewares", crear archivo "validar-roles.js"
 
 */
