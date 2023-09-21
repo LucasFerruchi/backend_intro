@@ -34,7 +34,7 @@ a.En MONGODB Compass
         volver a probar con un rol que "si" existe
 
         !validar el email
-        9.crear "helpers/db-validators.js", funcion "esEmailValido" 
+        9.importar Usuario y crear "helpers/db-validators.js", funcion "esEmailValido" 
         10.Exportar la funcion a la ruta post "carpeta routes/usuarios.js"
         11.en "controllers/usuariosCtrl.js" comentar la validacion del email
 

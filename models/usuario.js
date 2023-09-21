@@ -43,7 +43,7 @@ const UsuarioSchema = Schema({
 UsuarioSchema.methods.toJSON = function () {
   //desestructuramos los datos que NO queremos devolver
   const { __v, password, ...usuario } = this.toObject();
-  //retornamos el reso de datos que quedaron gusradados en "usuario"
+  //retornamos el resto de datos que quedaron gusradados en "usuario"
   return usuario;
 };
 
