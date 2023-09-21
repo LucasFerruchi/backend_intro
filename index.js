@@ -72,6 +72,12 @@ es para no estar deteniendo el proceso y levantarlo.
 !4-Verificar si existe usuario
 
 !5-Guardar en base de datos
+
+        a-En "usuariosCtrl", importar Usuario desde models
+
+        b-En "usuariosCtrl/usuariosPost", hacer la nueva
+        configuracion, agregar "async"
+
 .Verificar en MONGOCOMPASS
 
 */
