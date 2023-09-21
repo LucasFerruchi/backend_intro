@@ -29,7 +29,7 @@ const UsuarioSchema = Schema({
   rol: {
     type: String,
     required: true,
-    enum: ["USER_ROLE", "ADMIN_ROLE"], //SE PUEDEN AGREGAR LA CANTIDAD QUE QUEREMOS
+    // enum: ["USER_ROLE", "ADMIN_ROLE"], //SE PUEDEN AGREGAR LA CANTIDAD QUE QUEREMOS
     // //para apps pequeñas
     // default: "USER_ROLE",
   },
