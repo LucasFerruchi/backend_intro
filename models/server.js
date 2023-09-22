@@ -11,6 +11,7 @@ class Server {
     //ruta de autenticacion, agregar a "routes"
     this.authPath = "/api/auth";
     this.usuariosPath = "/api/usuarios";
+    this.categoriasPath = "/api/categorias";
 
     //DB
     this.conectarDB();
@@ -45,6 +46,8 @@ class Server {
     this.app.use(this.authPath, require("../routes/auth"));
 
     this.app.use(this.usuariosPath, require("../routes/usuarios"));
+    //ruta a categorias
+    this.app.use(this.categoriasPath, require("../routes/categorias"));
   }
 
   //LISTEN
