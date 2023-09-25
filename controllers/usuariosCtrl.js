@@ -29,8 +29,8 @@ const usuariosGet = async (req = request, res = response) => {
 
   // //para OPTIMIZAR la respuesta y sea MAS RAPIDA AUN
   // const [total, usuarios] = await Promise.all([
-  //   Usuario.countDocuments(),
-  //   Usuario.find().skip(desde).limit(limite),
+  //   Usuario.countDocuments(query),
+  //   Usuario.find(query).skip(desde).limit(limite),
   // ]);
 
   res.json({
