@@ -19,28 +19,28 @@ const usuariosGet = async (req = request, res = response) => {
   //recibe los "params" desde el front (POSTMAN)
   const { desde = 0, limite = 0 } = req.query;
 
-  /*b-corregir el GET para actualizar la lista 
+  /*b-corregir el GET para actualizar la lista
   y solo aparezcan los usuarios con estado true*/
-  const query = { estado: true };
+  // const query = { estado: true };
 
-  //COMO RESPONDEMOS? (//!primero hacerlo sin el "query")
-  const usuarios = await Usuario.find(query).skip(desde).limit(limite);
-  const total = await Usuario.countDocuments(query); //motrara el total de objetos del array
+  //COMO RESPONDEMOS? (//!agregar el "query" si quiero q se vean solo los usuarios con estado true)
+  const usuarios = await Usuario.find().skip(desde).limit(limite);
+  const total = await Usuario.countDocuments(); //motrara el total de objetos del array
 
   // //para OPTIMIZAR la respuesta y sea MAS RAPIDA AUN
   // const [total, usuarios] = await Promise.all([
-  //   Usuario.countDocuments(),
-  //   Usuario.find().skip(desde).limit(limite),
+  //   Usuario.countDocuments(query),
+  //   Usuario.find(query).skip(desde).limit(limite),
   // ]);
 
   res.json({
     total,
     usuarios,
   });
+  //------------------------------------------------------
 };
-//!-----------------------------------------------------
 
-//!nueva configuracion, agregar "async"
+//!-----------------------------------------------------
 const usuariosPost = async (req = request, res = response) => {
   //recibir cuerpo de la peticion
   const datos = req.body;
@@ -68,31 +68,34 @@ const usuariosPost = async (req = request, res = response) => {
     mensaje: "Usuario creado correctamente",
   });
 };
-//!-----------------------------------------------------
 
+//!-----------------------------------------------------
 //agregar el async
 const usuariosPut = async (req = request, res = response) => {
   //DESESTRUCTURMOS Y OBTENEMOS ID
   const { id } = req.params;
 
   //obtener datos a actualizar, por ej:
-  const { password, correo, ...resto } = req.body;
+  const { password, ...updUsuario } = req.body;
 
   //volver a sifrar el password
   if (password) {
     const salt = bcrypt.genSaltSync(10);
-    resto.password = bcrypt.hashSync(password, salt);
+    updUsuario.password = bcrypt.hashSync(password, salt);
   }
 
   //buscar el usuario y actualizarlo
-  const usuario = await Usuario.findByIdAndUpdate(id, resto, { new: true });
+  const usuario = await Usuario.findByIdAndUpdate(id, updUsuario, {
+    new: true,
+  });
   //como tercer param, le decimos que muestre los datos actualizados
 
   //agrego id y probar en POSTMAN
   res.json({
-    mensaje: "modifico un usuario",
+    mensaje: "Datos actualizados",
     // //comentar id
     // id,
+    // password,
     //agregar usuario
     usuario,
   });
@@ -104,8 +107,8 @@ agregando un BODY a la peticion PUT
 Actualizar mongodb compass
 y prestar atencio que cambia el password y nombre
 */
-//!-----------------------------------------------------
 
+//!-----------------------------------------------------
 const usuariosDelete = async (req = request, res = response) => {
   //DESESTRUCTURMOS Y OBTENEMOS ID
   const { id } = req.params;
@@ -125,10 +128,10 @@ const usuariosDelete = async (req = request, res = response) => {
   //metodo especifico para encontrar id
   const usuario = await Usuario.findById(id);
 
-  //Informar el cambio de estado
+  //Primero informar si el usuario YA esta con el estado false
   if (!usuario.estado) {
     return res.json({
-      msg: "El usuario esta inactivo!",
+      msg: "El usuario ya esta inactivo!",
     });
   }
 
