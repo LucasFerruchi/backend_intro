@@ -29,3 +29,5 @@ const generarJWT = (uid) => {
 module.exports = {
   generarJWT,
 };
+
+//!EXPORTARLA A "authCtrl.js - controllers"

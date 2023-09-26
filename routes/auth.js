@@ -1,13 +1,13 @@
 const { Router } = require("express");
 const { check } = require("express-validator");
 const { validarCampos } = require("../middlewares/validar_campos");
-const { login } = require("../controllers/auth");
+const { login } = require("../controllers/authCtrl");
 
 const router = Router();
 
 /*sera una peticion post,
 como primer parametro completo la ruta
-y como segunda param el "controlador" */
+y como segundo param el "controlador" */
 router.post(
   "/login",
   [

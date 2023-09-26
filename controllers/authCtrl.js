@@ -4,7 +4,7 @@ const Usuario = require("../models/usuario");
 const { generarJWT } = require("../helpers/generar-jwt");
 
 const login = async (req = request, res = response) => {
-  //recibimos los datos desde el frontend
+  //recibimos los datos desde el frontend (formulario login)
   const { correo, password } = req.body;
 
   ////Para probar la ruta nada mas
@@ -32,7 +32,7 @@ const login = async (req = request, res = response) => {
     }
     //!probar en POSTMAN
 
-    //verificar la contraseña - OJO la contraseña esta sifrada
+    //verificar la contraseña - OJO la contraseña esta cifrada
     const validPassword = bcrypt.compareSync(password, usuario.password);
     //devuelve true o flase
     if (!validPassword) {
@@ -46,6 +46,7 @@ const login = async (req = request, res = response) => {
 
     //generar token (va a venir de una funcion -generarJWT)
     const token = await generarJWT(usuario.id);
+    //agregarlo al res.json
 
     res.json({
       msg: "login ok",

@@ -15,11 +15,11 @@ como se compone un token
 
 !b-crear ruta de autenticacion
         1-en "models/server.js", 
-        agregar en el constructor y en routes agregar 
+        agregar en el constructor: 
                 
                 this.authPath="/api/auth"
 
-        y en routes agregar 
+        y en routes agregar:
 
                 this.app.use(this.authPath, require("../routes/auth"));
 -----------------------------------------------------------
@@ -37,15 +37,14 @@ como se compone un token
 !c-token
         1-instalar libreria 
 
-        2-en "auth.js -controllers" agregar la variable que
-        recibira a la funcion
+        npm i jsonwebtoken
 
-        3-en "helpers", crear archivo generar-jwt.js 
+        2-en "helpers", crear archivo generar-jwt.js 
         con su estructura y VARIABLE DE ENTORNO
 
-        4-importar la funcion a "auth.js - controllers"
+        3-importar la funcion a "authCtrl.js - controllers"
 
-        5-probar en POSTMAN - POST:login
+        4-probar en POSTMAN - POST:login
 -----------------------------------------------------------
         5-cambiar _id por "uid"
                 .en "models/usuario.js"
