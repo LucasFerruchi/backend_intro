@@ -1,18 +1,18 @@
 const { response, request } = require("express");
-const bcrypt = require("bcryptjs");
 const Usuario = require("../models/usuario");
+const bcrypt = require("bcryptjs");
 const { generarJWT } = require("../helpers/generar-jwt");
 
 const login = async (req = request, res = response) => {
   //recibimos los datos desde el frontend (formulario login)
   const { correo, password } = req.body;
 
-  ////Para probar la ruta nada mas
-  //   res.json({
-  //     msg: "login ok",
-  //     correo,
-  //     password,
-  //   });
+  // //Para probar la ruta nada mas
+  // res.json({
+  //   msg: "login ok",
+  //   correo,
+  //   password,
+  // });
 
   try {
     //verificar el correo

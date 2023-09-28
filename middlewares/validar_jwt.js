@@ -41,6 +41,7 @@ const validarJWT = async (req = request, res = response, next) => {
     next();
 
     //catch
+    // 401, no esta autorizado
   } catch (error) {
     console.log(error);
     res.status(401).json({

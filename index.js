@@ -25,13 +25,13 @@ como se compone un token
 -----------------------------------------------------------
 
         2-en "routes" crear archivo auth.js
-        3-en"controllers" crear archivo auth.js y exportarlo
+        3-en"controllers" crear archivo authCtrl.js y exportarlo
         a "routes/auth.js"
 
         4-probar la ruta en POSTMAN y
         5-agregar en el body de la peticon correo y password
 
-        6-configurar "auth.js - controllers" con las verificaciones
+        6-configurar "authCtrl.js - controllers" con las verificaciones
         7-configurar "auth.js - routes" con validaciones
 
 !c-token
