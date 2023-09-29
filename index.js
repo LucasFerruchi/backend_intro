@@ -24,4 +24,19 @@ server.listen();
         e-PROBAR EN POSTMAN 
 
         f-hacer rutas PUT y DELETE de categorias y sus controladores
-*/
+
+---------------------------------------------------------------------------------------------------
+
+2-CREAR NUEVO ENVIROMENT EN POSTMAN 
+
+        a- crear "local" con http://localhost:3000
+        b- agregarla a la ruta get:categoria con {{url}}
+
+---------------------------------------------------------------------------------------------------
+
+3-DEPLOYAR EN RAILWAY
+
+        a- deployar
+        b- crear variables de entorno
+
+        */
