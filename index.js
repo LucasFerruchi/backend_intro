@@ -5,7 +5,7 @@ const server = new Server();
 
 server.listen();
 
-//!20/03  1:12:00
+//!20/03  1:24:00
 /*
 1-CREAR CATEGORIA
 
@@ -16,4 +16,12 @@ server.listen();
         c-en "routes/categorias.js" (rutas y validaciones)
 
         d-en "controllers/categorias.js" (funciones para controladores)
+                1.GET obtenerCategorias
+                2.GET obtenerCategoria
+
+                3.POST crearCategoria
+        
+        e-PROBAR EN POSTMAN 
+
+        f-hacer rutas PUT y DELETE de categorias y sus controladores
 */

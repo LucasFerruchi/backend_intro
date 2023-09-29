@@ -8,7 +8,7 @@ class Server {
 
     //http
     this.port = process.env.PORT;
-    //ruta de autenticacion, agregar a "routes"
+    //rutas
     this.authPath = "/api/auth";
     this.usuariosPath = "/api/usuarios";
     this.categoriasPath = "/api/categorias";
