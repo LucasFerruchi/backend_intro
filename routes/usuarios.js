@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-/*Este ejemplo es con USUARIOS, pero podria ser con
-PRODUCTOS, PELICULAS, ETC*/
-//!1.importamos Router y guardamos en una variable
-=======
->>>>>>> segundaClase
 const { Router } = require("express");
 //!a-CONTROLADORES-3.IMPORTAR LA FUNCION
 const {
@@ -15,11 +9,6 @@ const {
 
 const router = Router();
 
-<<<<<<< HEAD
-//!2.creo la estructura de las rutas y configurar server.js
-/*hacer TODOS los tipos de PETICIONES y OJO 
-poner bien las rutas */
-=======
 //!a-CONTROLADORES-3.
 // //PETICION GET: pedimos info al backend
 // router.get("/", function (req, res) {
@@ -27,7 +16,6 @@ poner bien las rutas */
 //     mensaje: "recibo un usuario",
 //   });
 // });
->>>>>>> segundaClase
 
 //!a-CONTROLADORES-3.
 //PETICION GET: pedimos info al backend
@@ -53,23 +41,6 @@ router.get("/", usuariosGet);
 router.post("/", usuariosPost);
 //---------------------------------------------------------------------------------------------
 
-<<<<<<< HEAD
-  //PETICION POST: mandamos info al backend
-  res.json({
-    mensaje: "envio un usuario",
-
-    //!7.C-ENV EL CUERPO DE LA PETICION
-    body,
-  });
-});
-
-//PETICION PUT: actualizo info al backend
-router.put("/:id", function (req, res) {
-  res.json({
-    mensaje: "modifico un usuario",
-  });
-});
-=======
 // //PETICION PUT: actulaizo info al backend
 // router.put("/:id", function (req, res) {
 //   res.json({
@@ -87,7 +58,6 @@ router.put("/:id", usuariosPut);
 //     mensaje: "borre un usuario",
 //   });
 // });
->>>>>>> segundaClase
 
 //PETICION DELETE: elimino info al backend
 router.delete("/:id", usuariosDelete);
