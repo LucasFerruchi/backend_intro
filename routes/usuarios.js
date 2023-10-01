@@ -1,5 +1,11 @@
 const { Router } = require("express");
-//!a-CONTROLADORES-3.IMPORTAR LA FUNCION
+
+//!importar validaciones
+const { check } = require("express-validator");
+
+//funcion para validar campos
+const { validarCampos } = require("../middlewares/validar_campos");
+
 const {
   usuariosGet,
   usuariosPost,
@@ -9,58 +15,31 @@ const {
 
 const router = Router();
 
-//!a-CONTROLADORES-3.
-// //PETICION GET: pedimos info al backend
-// router.get("/", function (req, res) {
-//   res.json({
-//     mensaje: "recibo un usuario",
-//   });
-// });
-
-//!a-CONTROLADORES-3.
-//PETICION GET: pedimos info al backend
 router.get("/", usuariosGet);
-//---------------------------------------------------------------------------------------------
 
-//!a-5.En "usuariosCtrl.js", crear el resto de las funciones
-// //PETICION POST: mandamos info al backend
-// router.post("/", function (req, res) {
-//   //COMO RECIBIR DATOS
-//   const body = req.body;
+router.post(
+  "/",
+  //validaciones
+  [
+    check("nombre", "El nombre es obligatorio").notEmpty(), //con notEmpty, decimos q el campo NO TIENE QUE ESTAR VACIO
+    check(
+      "password",
+      "La contraseña debe tener como mínimo 6 caracteres"
+    ).isLength({ min: 6 }),
+    check("correo", "no es un correo válido!").isEmail(),
+    check("rol", "El rol no es válido!").isIn(["USER_ROLE", "ADMIN_ROLE"]),
+    /*
+      Pero si da algun error, el proyecto CAE.
+      Como hago para que esto no pase?
+      *funcion para validarCampos viene desde CARPETA MIDDLEWARES
+      */
+    validarCampos,
+  ],
+  usuariosPost
+);
 
-//   //PETICION POST: mandamos info al backend
-//   res.json({
-//     mensaje: "envio un usuario",
-
-//     //RECIBIR EL CUERPO DE LA PETICION
-//     body,
-//   });
-// });
-
-//PETICION POST: mandamos info al backend
-router.post("/", usuariosPost);
-//---------------------------------------------------------------------------------------------
-
-// //PETICION PUT: actulaizo info al backend
-// router.put("/:id", function (req, res) {
-//   res.json({
-//     mensaje: "modifico un usuario",
-//   });
-// });
-
-//PETICION PUT: actulaizo info al backend
 router.put("/:id", usuariosPut);
-//---------------------------------------------------------------------------------------------
 
-// //PETICION DELETE: elimino info al backend
-// router.delete("/:id", function (req, res) {
-//   res.json({
-//     mensaje: "borre un usuario",
-//   });
-// });
-
-//PETICION DELETE: elimino info al backend
 router.delete("/:id", usuariosDelete);
-//---------------------------------------------------------------------------------------------
 
 module.exports = router;

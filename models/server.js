@@ -1,53 +1,60 @@
 const express = require("express");
 const cors = require("cors");
+<<<<<<< HEAD
 //!9.1-En "server.js" (modelo), llamar funcion "dbConnection"
+=======
+>>>>>>> modeloUsuario
 const { dbConnection } = require("../database/config");
 
 class Server {
   constructor() {
     this.app = express();
 
-    //!VARIABLE DE ENTORNO
-    //!4.En "server.js". Agregarla en el constructor
+    //http
     this.port = process.env.PORT;
-    //!5.Configurar el "listen"
-
-    //!5.d-1.PETICION GET POST PUT DELETE
     this.usuariosPath = "/api/usuarios";
 
+<<<<<<< HEAD
     //!9.3-En "server.js" (modelo), llamar funcion "dbConnection"
+=======
+    //DB
+>>>>>>> modeloUsuario
     this.conectarDB();
 
+    //MIDDLEWARES
     this.middlewares();
 
+    //RUTAS
     this.routes();
   }
+<<<<<<< HEAD
   //!9.2-En "server.js" (modelo), llamar funcion "dbConnection"
+=======
+
+  //DB - FUNCTION
+>>>>>>> modeloUsuario
   async conectarDB() {
     await dbConnection();
   }
 
+  //MIDDLEWARES
   middlewares() {
     //CORS
     this.app.use(cors());
 
-    //LEER LO QUE ENVIA EL USUARIO EN EL CUERPO DE LA PATICION
+    //RECIBIR ARCHIVOS .JSON (EJ. BODY)
     this.app.use(express.json());
 
-    //CARPETA PUBLICA
+    //ACCESO CARPETA PUBLICA
     this.app.use(express.static("public"));
   }
 
+  //RUTAS
   routes() {
     this.app.use(this.usuariosPath, require("../routes/usuarios"));
   }
-  // listen() {
-  //   this.app.listen(3000, () => {
-  //     console.log("Server Online");
-  //   });
-  // }
 
-  //!5.Configurar el "listen"
+  //LISTEN
   listen() {
     this.app.listen(this.port, () => {
       console.log("Server Online port:", this.port);
@@ -56,4 +63,3 @@ class Server {
 }
 
 module.exports = Server;
-//!----------------------------------------------------------

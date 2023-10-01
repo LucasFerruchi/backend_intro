@@ -5,6 +5,7 @@ const server = new Server();
 
 server.listen();
 
+<<<<<<< HEAD
 //!CONT 06/03
 /*
 !COMENZAR CON TARJETA DE TRELLO
@@ -66,45 +67,46 @@ BASE DE DATOS
 */
 //-----------------------------------------------------------
 //-----------------------------------------------------------
+=======
+//!CONT 08/03 1:19:00
+>>>>>>> modeloUsuario
 
 /*
-!SERVIDOR EN LA NUBE (deployar el proyecto)
+!IMPORTANTE ANTES DE EMPEZAR
+!SUPER IMPORTANTEEEEEEE
 
 1-En "package.json", agregar en scrpts
 !unica vez q vamos a tocar el package.json
 
  "start": "node index.js",
 
- para que el servidor en la nube sepa que con ese comando 
- se levanta el proyecto
+ !IMPORTANTE ANTES DE EMPEZAR
+!SUPER IMPORTANTEEEEEEE
 
-2-Ir a "railway", crear cuenta (con github) y nuevo proyecto
-        a-deployarlo
-        b-ir a settings/create domain
+Agregar en middleware la sig linea
 
-3-Probar el repo en el navegador directamente y luego
-en POSTMAN 
-        a-AGREGARLE /api/usuarios
-        b-ANTEPONER https://
-
+//recibir datos .json
+    this.app.use(express.json());
 */
 
-//-----------------------------------------------------------
-//-----------------------------------------------------------
 /*
-!MongoDB
+!NODEMON
+1-Instalar libreria "nodemon" (de npm),
+es para no estar deteniendo el proceso y levantarlo.
 
-1-Abrin mongoDB atlas, crean cuenta
+        a-se lo puede instalar de manera local "npm install nodemon"
+        
+        b-o instalar de manera global, para no tener q instalarlo 
+        en todos los proyectos con "npm install -g nodemon"
 
-2-Crear base de datos, configurar usuarios, y dir IP.
-        a-llevar datos (usuario y password) a un bloc de notas
+!instalar en la terminal de WINDOWS
 
-3-Conectar base de datos a travez de "MONGODB compass"
+        c-EJECUTAMOS NODEMON en nuestro proyecto con el comando
+        "nodemon index"
 
-4-Copiar dir de enlace al bloc de notas y llevarlo al bloc de notas
-        a-configurar la dir con usuario y password
-        b-cambiar test por lucas
+!NODEMON solo actua en nuestro repositorio local.
 
+<<<<<<< HEAD
 queda asi:
 
 mongodb+srv://lucasFerruchi:1y6rN5FqxMgtEbgE@cluster0-lucas.44pmyjp.mongodb.net/lucasDB
@@ -127,4 +129,92 @@ que recibimos el mens "Server Online port:8080" y
 
 11-//!CREAR MODELO DE USUARIO
         a-En carpeta "models" crear archivo "usuario.js"
+=======
+*/
+//!---------------------------------------------------------
+
+//!Modelo de usuario
+/*
+1-En models/usuario.js. Crear el schema y model
+
+2-Crear el Usuario en la base de datos
+
+        a-En "usuariosCtrl", importar Usuario desde models
+
+        b-En "usuariosCtrl/usuariosPost", hacer la nueva
+        configuracion, agregar "async"
+
+3-Probar en POSTMAN
+
+        a-Llamar a la url del proyecto y en la PETICION POST 
+        agregar el siguiente objeto
+
+{
+    "nombre":"Lucas",
+    "correo":"lucas@lucas.com",
+    "password":"12345",
+    "rol":"USER_ROLE",
+    "edad":34
+}
+
+!4-Verificar si existe usuario
+
+!5-Guardar en base de datos
+
+        a-En "usuariosCtrl", importar Usuario desde models
+
+        b-En "usuariosCtrl/usuariosPost", hacer la nueva
+        configuracion, agregar "async"
+
+.Verificar en MONGOCOMPASS
+
+*/
+//!---------------------------------------------------------
+
+//!ENCRIPTACION DE CONTRASEÑA
+
+/* 
+!instalar "bcryptjs"
+
+npm install bcryptjs
+
+a - importarla en "usuariosCtrl.js"
+b - usarla en "peticion POST"
+
+PROBAR EN POSTMAN Y MONGODB COMPASS
+*/
+//!---------------------------------------------------------
+
+//!VALIDACIONES
+
+/*
+!EXPRESS VALIDATOR
+
+1.intalar
+
+npm install --save express-validator
+
+2- DONDE HACEMOS LAS VALIDACIONES????
+ - como tienen q suceder ANTES de las PETICIONES
+ las hacemos en routes/usuarios.js con el metodo CHECK
+
+3-Importarlas y VALIDAR en "peticion post"
+        .entre la ruta y la funcion 
+        .entre corchetes
+-------------------------------------------------------
+
+4-Pero como hacemos para aplicar a todas las PETICIONAS
+las validacion que acabamos de hacer en la POST????????
+
+        A-Crear la carpeta middlewares/validar_campos.js
+        B-Llevar la funcion a "routes/usuarios.js"
+*/
+
+//!TAREA
+/*
+Para poder trabajar con PETICION GET
+
+crear 10 usuarios, desde postman con PETICION POST.
+verificar que queden guardados en la DB
+>>>>>>> modeloUsuario
 */
