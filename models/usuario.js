@@ -17,7 +17,7 @@ const UsuarioSchema = Schema({
   correo: {
     type: String,
     required: [true, "El correo es obligatorio"],
-    unique: true, //indicamos que este dato es unico para cada usuario
+    unique: true,
   },
   password: {
     type: String,
@@ -29,8 +29,6 @@ const UsuarioSchema = Schema({
   rol: {
     type: String,
     required: true,
-    enum: ["USER_ROLE", "ADMIN_ROLE"], //SE PUEDEN AGREGAR LA CANTIDAD QUE QUEREMOS
-    default: "USER_ROLE",
   },
   estado: {
     type: Boolean,
@@ -38,15 +36,10 @@ const UsuarioSchema = Schema({
   },
 });
 
+//!Quitar datos de la respuesta json
+UsuarioSchema.methods.toJSON = function () {
+  const { __v, password, ...usuario } = this.toObject();
+  return usuario;
+};
+
 module.exports = model("Usuario", UsuarioSchema);
-
-//!pasar a crear el usuario en la base de datos en "usuariosCtrl.js"
-
-/*
-2-Crear el Usuario en la base de datos
-
-        a-En "usuariosCtrl", importar Usuario desde models
-
-        b-En "usuariosCtrl/usuariosPost", hacer la nueva
-        configuracion, agregar "async"
-*/

@@ -1,9 +1,7 @@
 const { Router } = require("express");
 
-//!importar validaciones
 const { check } = require("express-validator");
 
-//funcion para validar campos
 const { validarCampos } = require("../middlewares/validar_campos");
 
 const {
@@ -13,33 +11,56 @@ const {
   usuariosDelete,
 } = require("../controllers/usuariosCtrl");
 
+const {
+  esRolValido,
+  esEmailValido,
+  esIdValido,
+} = require("../helpers/db-validators");
+
 const router = Router();
 
 router.get("/", usuariosGet);
 
 router.post(
   "/",
-  //validaciones
+
   [
-    check("nombre", "El nombre es obligatorio").notEmpty(), //con notEmpty, decimos q el campo NO TIENE QUE ESTAR VACIO
+    check("nombre", "El nombre es obligatorio").notEmpty(),
     check(
       "password",
       "La contraseña debe tener como mínimo 6 caracteres"
     ).isLength({ min: 6 }),
+
     check("correo", "no es un correo válido!").isEmail(),
-    check("rol", "El rol no es válido!").isIn(["USER_ROLE", "ADMIN_ROLE"]),
-    /*
-      Pero si da algun error, el proyecto CAE.
-      Como hago para que esto no pase?
-      *funcion para validarCampos viene desde CARPETA MIDDLEWARES
-      */
+    check("correo").custom(esEmailValido),
+
+    check("rol").custom(esRolValido),
+
     validarCampos,
   ],
   usuariosPost
 );
 
-router.put("/:id", usuariosPut);
+router.put(
+  "/:id",
+  [
+    check("id", "No es un ID válido").isMongoId(),
+    check("id").custom(esIdValido),
+    check("rol").custom(esRolValido),
+    validarCampos,
+  ],
+  usuariosPut
+);
 
-router.delete("/:id", usuariosDelete);
+//!Validaciones en DELETE
+router.delete(
+  "/:id",
+  [
+    check("id", "No es un ID válido").isMongoId(),
+    check("id").custom(esIdValido),
+    validarCampos,
+  ],
+  usuariosDelete
+);
 
 module.exports = router;
