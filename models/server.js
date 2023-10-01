@@ -1,9 +1,5 @@
 const express = require("express");
 const cors = require("cors");
-<<<<<<< HEAD
-//!9.1-En "server.js" (modelo), llamar funcion "dbConnection"
-=======
->>>>>>> modeloUsuario
 const { dbConnection } = require("../database/config");
 
 class Server {
@@ -14,11 +10,7 @@ class Server {
     this.port = process.env.PORT;
     this.usuariosPath = "/api/usuarios";
 
-<<<<<<< HEAD
-    //!9.3-En "server.js" (modelo), llamar funcion "dbConnection"
-=======
     //DB
->>>>>>> modeloUsuario
     this.conectarDB();
 
     //MIDDLEWARES
@@ -27,12 +19,8 @@ class Server {
     //RUTAS
     this.routes();
   }
-<<<<<<< HEAD
-  //!9.2-En "server.js" (modelo), llamar funcion "dbConnection"
-=======
 
   //DB - FUNCTION
->>>>>>> modeloUsuario
   async conectarDB() {
     await dbConnection();
   }
