@@ -1,141 +1,130 @@
-//!COMENZAR LA CLASE SIGUIENTO LA TARJ DE TRELLO
-//!01/03
-
-// console.log("Hola 52i");
-// ---------------------------------
-
-//!EXPRESS
-/*
-COMO IMPORTAMOS? ya no usamos "import"
-usamos el const express= require ('express')
-*/
-
-////---------------------------------------------
-// const express = require("express");
-// const app = express();
-
-// app.get("/", function (req, res) {
-//   res.send("Hello World");
-// });
-
-// app.listen(3000);
-////---------------------------------------------
-
-/*
--La primera linea de este codigo, indica q estamos 
-'importando express'
--La segunda, con 'app', nos esta dando acceso 
-a los metodos de expres
--En la tercera, el metodo '.get', en el primer parametro
-'donde esta haciendo la peticion' "/", seria 
-a la direccion RAIZ. el segundo parametro es una 'function':
-con un 'req' (es la peticion) y un 'res' (es la respuesta).
--En la cuarta, 'res.send', la respuesta del servidor con su 
-contenico.
--por ultimo el 'app.listen' con el puerto de COMUNICACION
-
-!correr el servidor con 'node index.js' en la terminal y 
-!mostrar en el navegador el localhost:3000
-!PARAR EL SERVIDOR con 'ctrl+c'
-
-IMPORTANTE: cada vez que aplicamos cambios, hay q DETENER   
-el servidor y volver a ejecutarlo
-*/
-
-//!sugerir crear ".gitignore" con el archivo node_modules
-
-//!------------------------------------------------------
-// !CREACION DE MODELOS
-/*
-1.crear carpeta 'models'/server.js
-2.en server.js crear estructura y su constructor
----------------------------------------
-! comentar el codigo de arriba y continuar con el de abajo
-*/
-
-//!3.RECIBIENDO A SERVER.JS (como importamos?)
-
 const Server = require("./models/server");
+require("dotenv").config();
 
 const server = new Server();
 
 server.listen();
 
-//!Probar servidor, detenerlo y levantarlo de nuevo
-//!----------------------------------------------------
+//!CONT 06/03
+/*
+!COMENZAR CON TARJETA DE TRELLO
+
+!a-CONTROLADORES
+    1.Crear carpeta "controllers/usuariosCtrl.js"
+
+    2.En "usuariosCtrl.js" hacer estructura 
+    y funcion para la PETICION GET. Y agregar
+    apiKey y LIMIT desde POSTMAN web
+
+    3.En "usuarios.js", configurar la
+    PETICION GET (recibe a la funcion
+    de "usuariosGet.js" e "//!IMPORTARLA" )
+
+    4.(detener y volver a levantar el proyecto y probar en POSTMAN)
+
+    5.En "usuariosCtrl.js", crear el resto de las funciones
+
+    6.(detener y volver a levantar el proyecto y probar en POSTMAN)
+
+-----------------------------------------------------------
+VALIDAR (//!NO VER AUN)
+
+1.En las rutas, entre el path y la funcion. 
+Tenemos que validar los datos
+
+Ej: en "usuarios.js"
+
+    router.delete("/:id", "VALIDAR", usuariosDelete);
+-----------------------------------------------------------
+
+!b-VARIABLES DE ENTORNO
+
+1.Crear el archivo ".env", donde creamos las variables de entorno
+2.PORT=8080
+
+3.# b-En "index.jsx" agregar el require("dotenv").config();
+
+4.En "server.js". Agregarla en el constructor
+
+!5.Configurar el "listen"
+
+6.Agregar a .gitignore el archivo .env
+Esto es para EVITAR que cuando subamos nuestro proyecto
+a GITHUB nuestra ruta a la base de datos SEA PUBLICA
+-----------------------------------------------------------
+
+!env.template
+
+copiamos los mismos comandos que hay en .env, para subir esos
+datos a github (pero sin sus valores). Para que en el README
+podamos especificar al usuario que debe agregar el archivo .env
+y completar los datos de conexion
+
+!HASTA ACA: terminamos la configuracion de nuestro SERVIDOR LOCAL
+a partir de ahora, debemos configurar el SERVIDRO EN LA NUBE y la
+BASE DE DATOS
+*/
+//-----------------------------------------------------------
+//-----------------------------------------------------------
 
 /*
-!4.CONTINUAR con 'MIDDLEWARES' en 'server.js'
-a-agregarlo al constructor ('serever.js')
+!SERVIDOR EN LA NUBE (deployar el proyecto)
 
-b-definir carpeta publica y archivo de ejemplo 'index.html'
-c-modificar la ruta en 'server.js' por  '/api/usuarios' 
+1-En "package.json", agregar en scrpts
+!unica vez q vamos a tocar el package.json
+
+ "start": "node index.js",
+
+ para que el servidor en la nube sepa que con ese comando 
+ se levanta el proyecto
+
+2-Ir a "railway", crear cuenta (con github) y nuevo proyecto
+        a-deployarlo
+        b-ir a settings/create domain
+
+3-Probar el repo en el navegador directamente y luego
+en POSTMAN 
+        a-AGREGARLE /api/usuarios
+        b-ANTEPONER https://
+
 */
 
-//!----------------------------------------------------
-/* 
-!5.Crear las peticiones GET, POST, PUT, DELETE
-(recibir, enviar, modificar y eliminar usuarios)
-
-a-crear carpeta routes
-b-componente usuarios.js/con su estructura, y hacer TODOS
-los tipos de PETICIONES y sus RUTAS
-
-d-configuro el "server.js"
-
-!e-INSTALAR Thunder client
-PROBAR TODO en la extension THUNDER CLIENT
-
-(cuando pruebe metodo put y delete agregar cualquier id,
-sino dará error.
-    ej: http://localhost:3000/api/usuarios/86544)
-*/
-//!----------------------------------------------------
-
-//!6.POSTMAN
+//-----------------------------------------------------------
+//-----------------------------------------------------------
 /*
-a-Ir a POSTMAN y crear un nuevo "espacio de trabajo" 
+!MongoDB
 
-b-ponerle el nombre de la comision
+1-Abrin mongoDB atlas, crean cuenta
 
-c-probar los pedidos
- */
-//!----------------------------------------------------
+2-Crear base de datos, configurar usuarios, y dir IP.
+        a-llevar datos (usuario y password) a un bloc de notas
 
-//!7.COMO RECIBIR DATOS
-/*
-(!detener el SERVIDOR)
-7.A-en server.js, middlewares. Agregar
-"Leer lo que envia el usuario por el cuerpo de la peticion"
+3-Conectar base de datos a travez de "MONGODB compass"
 
-B-en POSTMAN (pagina web), 
--en la peticion POST
--configurar el BODY (raw/JSON), y crear un objeto
+4-Copiar dir de enlace al bloc de notas y llevarlo al bloc de notas
+        a-configurar la dir con usuario y password
+        b-cambiar test por lucas
 
-{
-    "nomre":"lucas",
-    "com": "52i"
-}
+queda asi:
 
-C-en usuarios.js, "router.post". Deberiamos recibir
-el "cuerpo de la peticion"
+mongodb+srv://lucasFerruchi:1y6rN5FqxMgtEbgE@cluster0-lucas.44pmyjp.mongodb.net/lucasDB
 
-(!levantar el SERVIDOR)
-----------------------------------------------------------
+5-Ir a mongoDB compass (aplicacion), pegar dir configurada
+6-En VISUAL. .env/MONGODB_CNN=
+
+7-mongoose (BUSCAR EN LA CARD DE TRELLO)
+        A-instalar mongoose "npm install mongoose --save"
+
+8-Crear carpeta "database" con el archivo "config.js"
+        a-Hacer estructura mostrando un poco pag MONGOOSE
+
+9-En "server.js" (modelo), llamar funcion "dbConnection".
+!copiar DE MONGODB COMPASS en ".env"
+
+10-Levantar el servidor (node index.js) y ver en la teminal 
+que recibimos el mens "Server Online port:8080" y
+"Base de datos OnLine"
+
+11-//!CREAR MODELO DE USUARIO
+        a-En carpeta "models" crear archivo "usuario.js"
 */
-
-/*
-!CORS
-
-7.1-INSTLAR la dependencia "cors" y mostrarla en "npm"
-
-npm install cors --save
-
-COMO LAS USAMOS?
-7.2-en "server.js" IMPORTAR "cors" 
-
-7.3-en "server.js/middlewares" agragar "cors"
-*/
-
-//!----------------------------------------------------
-//!8.MOSTRAR LA HOJA DE "CODIGOS (trello)"
