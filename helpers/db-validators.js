@@ -29,10 +29,21 @@ const esIdValido = async (id) => {
   }
 };
 
+//funcion  CATEGORIA existe
+const esCategValido = async (id) => {
+  //metodo especifico para encontrar id
+  const existeCategoria = await Categoria.findById(id);
+
+  if (!existeCategoria) {
+    throw new Error(`El Id ${id} no corresponde a una categoria existente!`);
+  }
+};
+
 module.exports = {
   esRolValido,
   esEmailValido,
   esIdValido,
+  esCategValido,
 };
 
 //!Exportar la funcion a la ruta post "carpeta routes/usuarios.js"

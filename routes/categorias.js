@@ -1,6 +1,8 @@
 const { Router } = require("express");
 const { validarJWT } = require("../middlewares/validar_jwt");
+const { esAdminRole } = require("../middlewares/validar-roles");
 const { check } = require("express-validator");
+const { esCategValido } = require("../helpers/db-validators");
 const { validarCampos } = require("../middlewares/validar_campos");
 const {
   obtenerCategorias,
@@ -10,15 +12,18 @@ const {
   borrarCategoria,
 } = require("../controllers/categoriasCtrl");
 
-const { esAdminRole } = require("../middlewares/validar-roles");
-
 const router = Router();
 
 router.get("/", [validarJWT], obtenerCategorias);
 
 router.get(
   "/:id",
-  [validarJWT, check("id", "El id no es valido").isMongoId(), validarCampos],
+  [
+    validarJWT,
+    check("id", "El id no es valido").isMongoId(),
+    check("id").custom(esCategValido),
+    validarCampos,
+  ],
   obtenerCategoria
 );
 
@@ -40,6 +45,7 @@ router.put(
     validarJWT,
     esAdminRole,
     check("id", "El id no es valido").isMongoId(),
+    check("id").custom(esCategValido),
     check("nombre", "El nombre es obligatorio").notEmpty(),
     validarCampos,
   ],
@@ -53,6 +59,7 @@ router.delete(
     validarJWT,
     esAdminRole,
     check("id", "El id no es valido").isMongoId(),
+    check("id").custom(esCategValido),
     validarCampos,
   ],
   borrarCategoria
