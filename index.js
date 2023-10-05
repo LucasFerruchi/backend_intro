@@ -5,7 +5,7 @@ const server = new Server();
 
 server.listen();
 
-//!22/03 cont 37min
+//!22/03 cont 1:17:00
 
 /*
 1-CREAR
@@ -15,5 +15,13 @@ Ruta de cursos
 Controlador de cursos
 db-validator - esCrusoValido
 serve agregar el path en el constructor y la ruta en routes
+
+-----------------------------------------------------------------------------
+
+2-CREAR BUSCADOR
+
+routes - buscar.js
+controllers - buscarCtrl.js - funcion principal y por termino
+        !REGEX
 
 */
