@@ -39,7 +39,7 @@ const obtenerCurso = async (req = request, res = response) => {
 
 //!POST - curso
 const crearCurso = async (req = request, res = response) => {
-  const { precio, categoria, descripcion } = req.body;
+  const { precio, categoria, img, descripcion } = req.body;
   const nombre = req.body.nombre.toUpperCase();
 
   const cursoDB = await Curso.findOne({ nombre });
@@ -55,6 +55,7 @@ const crearCurso = async (req = request, res = response) => {
     nombre,
     categoria,
     precio,
+    img,
     descripcion,
     usuario: req.usuario._id,
   };
@@ -77,7 +78,7 @@ const crearCurso = async (req = request, res = response) => {
 //!PUT - curso
 const actualizarCurso = async (req = request, res = response) => {
   const { id } = req.params;
-  const { precio, categoria, descripcion, destacado } = req.body; // req.body.nombre.toUpperCase();
+  const { precio, categoria, descripcion, img, destacado } = req.body; // req.body.nombre.toUpperCase();
 
   const usuario = req.usuario._id;
 
@@ -86,6 +87,7 @@ const actualizarCurso = async (req = request, res = response) => {
     precio,
     descripcion,
     categoria,
+    img,
     destacado,
     usuario,
   };
