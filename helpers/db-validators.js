@@ -1,6 +1,7 @@
 const Rol = require("../models/rol");
 const Usuario = require("../models/usuario");
 const Categoria = require("../models/categoria");
+const Curso = require("../models/curso");
 
 const esRolValido = async (rol) => {
   const existeRol = await Rol.findOne({ rol });
@@ -37,9 +38,20 @@ const esCategValido = async (id) => {
   }
 };
 
+//funcion  CATEGORIA existe
+const esCursoValido = async (id) => {
+  //metodo especifico para encontrar id
+  const existeCurso = await Curso.findById(id);
+
+  if (!existeCurso) {
+    throw new Error(`El Id ${id} no corresponde a un curso existente!`);
+  }
+};
+
 module.exports = {
   esRolValido,
   esEmailValido,
   esIdValido,
   esCategValido,
+  esCursoValido,
 };
