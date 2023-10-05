@@ -78,7 +78,7 @@ const crearCurso = async (req = request, res = response) => {
 //!PUT - curso
 const actualizarCurso = async (req = request, res = response) => {
   const { id } = req.params;
-  const { precio, categoria, descripcion, destacado } = req.body; // req.body.nombre.toUpperCase();
+  const { precio, categoria, descripcion, img, destacado } = req.body; // req.body.nombre.toUpperCase();
 
   const usuario = req.usuario._id;
 
@@ -87,6 +87,7 @@ const actualizarCurso = async (req = request, res = response) => {
     precio,
     descripcion,
     categoria,
+    img,
     destacado,
     usuario,
   };
