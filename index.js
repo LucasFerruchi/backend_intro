@@ -27,16 +27,17 @@ server.listen();
 
 ---------------------------------------------------------------------------------------------------
 
-2-CREAR NUEVO ENVIROMENT EN POSTMAN 
-
-        a- crear "local" con http://localhost:3000
-        b- agregarla a la ruta get:categoria con {{url}}
-
----------------------------------------------------------------------------------------------------
-
-3-DEPLOYAR EN RAILWAY
+2-DEPLOYAR EN RAILWAY O RENDER
 
         a- deployar
         b- crear variables de entorno
 
+
+
+---------------------------------------------------------------------------------------------------
+
+3-CREAR NUEVO ENVIROMENT EN POSTMAN 
+
+        a- crear "local" con http://localhost:3000
+        b- agregarla a la ruta get:categoria con {{url}}
         */
