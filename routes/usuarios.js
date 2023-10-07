@@ -16,9 +16,7 @@ const {
   esIdValido,
 } = require("../helpers/db-validators");
 
-//importo funcion para validar token
 const { validarJWT } = require("../middlewares/validar_jwt");
-//importo funcion para validar rol
 const { esAdminRole } = require("../middlewares/validar-roles");
 
 const router = Router();
@@ -37,9 +35,7 @@ router.post(
       "La contraseña debe tener como mínimo 6 caracteres"
     ).isLength({ min: 6 }),
 
-    //En apps pequeñas
     check("correo", "no es un correo válido!").isEmail(),
-    //En apps grandes q pueden crecer
     check("correo").custom(esEmailValido),
 
     check("rol").custom(esRolValido),
@@ -53,10 +49,8 @@ router.post(
 router.put(
   "/:id",
   [
-    //funcion para validar token
     validarJWT,
-    check("id", "No es un ID válido").isMongoId(), //metodo para verificar que sea lenguaje mongo
-    //en "helpers/db-validators.js" funcion para verifiar el id
+    check("id", "No es un ID válido").isMongoId(),
     check("id").custom(esIdValido),
     check("rol").custom(esRolValido),
     validarCampos,
@@ -68,10 +62,8 @@ router.put(
 router.delete(
   "/:id",
   [
-    //funcion para validar token
     validarJWT,
 
-    //funcion para validar rol
     esAdminRole,
 
     check("id", "No es un ID válido").isMongoId(),

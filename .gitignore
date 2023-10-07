@@ -1,4 +1,3 @@
 node_modules
 
-# agrego las variables de entorno
 .env

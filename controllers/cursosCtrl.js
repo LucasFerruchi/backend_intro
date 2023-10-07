@@ -1,7 +1,6 @@
 const { response, request } = require("express");
 const Curso = require("../models/curso");
 
-//!GET - cursos
 const obtenerCursos = async (req = request, res = response) => {
   const { desde = 0, limite = 0 } = req.query;
   const query = { estado: true };
@@ -20,9 +19,7 @@ const obtenerCursos = async (req = request, res = response) => {
     cursos,
   });
 };
-//EXPORTAR A RUTAS
 
-//!GET - curso
 const obtenerCurso = async (req = request, res = response) => {
   const { id } = req.params;
 
@@ -34,12 +31,9 @@ const obtenerCurso = async (req = request, res = response) => {
     curso,
   });
 };
-//EXPORTAR A RUTAS
-//!---------------------------------------------------------------------------
 
-//!POST - curso
 const crearCurso = async (req = request, res = response) => {
-  const { precio, categoria, descripcion, img } = req.body;
+  const { precio, categoria, img, descripcion } = req.body;
   const nombre = req.body.nombre.toUpperCase();
 
   const cursoDB = await Curso.findOne({ nombre });
@@ -50,17 +44,16 @@ const crearCurso = async (req = request, res = response) => {
     });
   }
 
-  //Si no exste ya un curso con ese nombre, generar la info que vamos a guardar
   const data = {
     nombre,
     categoria,
     precio,
+    img,
     descripcion,
     img,
     usuario: req.usuario._id,
   };
 
-  //crear categoria - nueva instancia del modelo Curso
   const curso = new Curso(data);
 
   await curso.save();
@@ -72,17 +65,13 @@ const crearCurso = async (req = request, res = response) => {
     });
   }
 };
-//EXPORTAR A RUTAS
-//!---------------------------------------------------------------------------
 
-//!PUT - curso
 const actualizarCurso = async (req = request, res = response) => {
   const { id } = req.params;
-  const { precio, categoria, descripcion, img, destacado } = req.body; // req.body.nombre.toUpperCase();
+  const { precio, categoria, descripcion, img, destacado } = req.body;
 
   const usuario = req.usuario._id;
 
-  //actualizar la data
   const data = {
     precio,
     descripcion,
@@ -92,7 +81,6 @@ const actualizarCurso = async (req = request, res = response) => {
     usuario,
   };
 
-  //Para actualizar el nombre
   if (req.body.nombre) {
     data.nombre = req.body.nombre.toUpperCase();
   }
@@ -104,10 +92,7 @@ const actualizarCurso = async (req = request, res = response) => {
     curso,
   });
 };
-//EXPORTAR A RUTAS
-//!---------------------------------------------------------------------------
 
-//!DELETE - curso
 const borrarCurso = async (req = request, res = response) => {
   const { id } = req.params;
 
@@ -118,12 +103,9 @@ const borrarCurso = async (req = request, res = response) => {
   );
 
   res.json({
-    // cursoEliminado,
     msg: `Curso eliminado! - ${cursoEliminado}`,
   });
 };
-
-//!IMPORTARLA A LAS RUTAS
 
 module.exports = {
   obtenerCursos,

@@ -37,7 +37,6 @@ router.post(
   ],
   crearCategoria
 );
-//probar en POSTMAN sin TOKEN primero
 
 router.put(
   "/:id",
@@ -51,7 +50,6 @@ router.put(
   ],
   actualizarCategoria
 );
-//probar en POSTMAN
 
 router.delete(
   "/:id",

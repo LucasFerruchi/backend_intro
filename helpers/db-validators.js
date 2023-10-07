@@ -19,7 +19,6 @@ const esEmailValido = async (correo) => {
   }
 };
 
-//funcion para verifiar el id y saber si el USUARIO existe
 const esIdValido = async (id) => {
   const existeUsuario = await Usuario.findById(id);
 
@@ -28,9 +27,7 @@ const esIdValido = async (id) => {
   }
 };
 
-//funcion  CATEGORIA existe
 const esCategValido = async (id) => {
-  //metodo especifico para encontrar id
   const existeCategoria = await Categoria.findById(id);
 
   if (!existeCategoria) {
@@ -38,9 +35,7 @@ const esCategValido = async (id) => {
   }
 };
 
-//funcion  CATEGORIA existe
 const esCursoValido = async (id) => {
-  //metodo especifico para encontrar id
   const existeCurso = await Curso.findById(id);
 
   if (!existeCurso) {

@@ -3,7 +3,6 @@ const { validarJWT } = require("../middlewares/validar_jwt");
 const { esAdminRole } = require("../middlewares/validar-roles");
 const { check } = require("express-validator");
 const { validarCampos } = require("../middlewares/validar_campos");
-//Validar curso
 const { esCursoValido } = require("../helpers/db-validators");
 
 const {
@@ -38,7 +37,6 @@ router.post(
   ],
   crearCurso
 );
-//probar en POSTMAN sin TOKEN primero
 
 router.put(
   "/:id",
@@ -51,7 +49,6 @@ router.put(
   ],
   actualizarCurso
 );
-//probar en POSTMAN
 
 router.delete(
   "/:id",

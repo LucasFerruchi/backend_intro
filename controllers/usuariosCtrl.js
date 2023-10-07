@@ -5,19 +5,10 @@ const Usuario = require("../models/usuario");
 const usuariosGet = async (req = request, res = response) => {
   const { desde = 0, limite = 0 } = req.query;
 
-  /*b-corregir el GET para actualizar la lista 
-  y solo aparezcan los usuarios con estado true*/
   const query = { estado: true };
 
-  //COMO RESPONDEMOS? (//!primero hacerlo sin el "query")
   const usuarios = await Usuario.find(query).skip(desde).limit(limite);
-  const total = await Usuario.countDocuments(query); //motrara el total de objetos del array
-
-  // //para OPTIMIZAR la respuesta y sea MAS RAPIDA AUN
-  // const [total, usuarios] = await Promise.all([
-  //   Usuario.countDocuments(query),
-  //   Usuario.find(query).skip(desde).limit(limite),
-  // ]);
+  const total = await Usuario.countDocuments(query);
 
   res.json({
     total,
@@ -26,7 +17,6 @@ const usuariosGet = async (req = request, res = response) => {
 };
 
 const usuariosPost = async (req = request, res = response) => {
-  //recibir cuerpo de la peticion
   const datos = req.body;
   const { nombre, correo, password, rol } = datos;
 
@@ -69,18 +59,6 @@ const usuariosDelete = async (req = request, res = response) => {
   // !mostrar el usuario que realizo la accion delete
   const usuarioAdmin = req.usuario;
 
-  // // BORRAR EL ELEMENTO DEFINITIVAMENTE -------------------
-  // const usuarioBorrado = await Usuario.findByIdAndDelete(id);
-
-  // res.json({
-  //   mensaje: "Usuario borrado!",
-  //   //mostramos la info del usuario inactivado
-  //   usuarioBorrado,
-  // });
-  //-----------------------------------------------------
-
-  // INFORMAR EL CAMBIO DE ESTADO -----------------------
-  //metodo especifico para encontrar id
   const usuario = await Usuario.findById(id);
 
   if (!usuario.estado) {
