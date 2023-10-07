@@ -28,5 +28,19 @@ controllers - buscarCtrl.js - funcion principal y por termino
 
 3-CONFIGURAR EL SERVER
 
+-----------------------------------------------------------------------------
+
+4-PROBAR EN POSTMAN
+
+-----------------------------------------------------------------------------
+
+5-HACER DOCUMENTACION DEL BACKEND
+        a-en los "..." de la coleccion, seleccionar 
+        "View documentation", se generara la doc
+
+        b-cambiar el lenguaje a JavaScript Fetch
+
+        c-Publish
+                .seleccionar el Environment
 
 */
