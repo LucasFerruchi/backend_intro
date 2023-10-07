@@ -24,4 +24,9 @@ routes - buscar.js
 controllers - buscarCtrl.js - funcion principal y por termino
         !REGEX
 
+-----------------------------------------------------------------------------
+
+3-CONFIGURAR EL SERVER
+
+
 */
