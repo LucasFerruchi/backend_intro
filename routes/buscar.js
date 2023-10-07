@@ -1,4 +1,6 @@
 const { Router } = require("express");
+//CONTROLADOR
+const { buscar } = require("../controllers/buscarCtrl");
 
 const router = Router();
 
