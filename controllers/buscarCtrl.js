@@ -10,7 +10,7 @@ const coleccionesPermitidas = ["usuarios", "categorias", "cursos"];
 //!hacer este cod LUEGO de la funcion PRINCIPAL---------------
 //funciones para buscar por termino
 //buscar usuarios
-const buscarUsuarios = async (termino, res) => {
+const buscarUsuarios = async (termino, res = response) => {
   //Expresiones regulares "regex" (busquedas especificas)
   const regex = new RegExp(termino, "i");
 
@@ -27,7 +27,7 @@ const buscarUsuarios = async (termino, res) => {
 };
 
 //buscar categorias
-const buscarCategorias = async (termino, re = response) => {
+const buscarCategorias = async (termino, res = response) => {
   const regex = new RegExp(termino, "i");
 
   const categorias = await Categoria.find({
@@ -41,7 +41,7 @@ const buscarCategorias = async (termino, re = response) => {
 };
 
 //buscar cursos
-const buscarCursos = async (termino, re = response) => {
+const buscarCursos = async (termino, res = response) => {
   const regex = new RegExp(termino, "i");
 
   const cursos = await Curso.find({
