@@ -20,5 +20,3 @@ const esAdminRole = (req = request, res = response, next) => {
 module.exports = {
   esAdminRole,
 };
-
-//!exportarlo a "routes/usuarios.js/route.delete"

@@ -56,7 +56,6 @@ const usuariosPut = async (req = request, res = response) => {
 const usuariosDelete = async (req = request, res = response) => {
   const { id } = req.params;
 
-  // !mostrar el usuario que realizo la accion delete
   const usuarioAdmin = req.usuario;
 
   const usuario = await Usuario.findById(id);
@@ -77,7 +76,6 @@ const usuariosDelete = async (req = request, res = response) => {
     mensaje: "Usuario inactivo!",
     usuarioInactivo,
 
-    // !mostrar el usuario que realizo la accion delete
     usuarioAdmin,
   });
 };

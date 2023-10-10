@@ -21,10 +21,8 @@ const { esAdminRole } = require("../middlewares/validar-roles");
 
 const router = Router();
 
-//!Ruta GET (Pedir datos podria un admin)
 router.get("/", usuariosGet);
 
-//!Ruta POST - REGISTRO DE USUARIO (...)
 router.post(
   "/",
 
@@ -45,7 +43,6 @@ router.post(
   usuariosPost
 );
 
-//!Ruta PUT (Actualizar podria un usuario comun)
 router.put(
   "/:id",
   [
@@ -58,7 +55,6 @@ router.put(
   usuariosPut
 );
 
-//!Ruta DELETE (Borrar podria un admin)
 router.delete(
   "/:id",
   [
