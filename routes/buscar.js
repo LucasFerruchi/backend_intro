@@ -1,5 +1,5 @@
 const { Router } = require("express");
-//CONTROLADOR
+//controlador
 const { buscar } = require("../controllers/buscarCtrl");
 
 const router = Router();
